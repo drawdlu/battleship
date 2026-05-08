@@ -1,0 +1,50 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "overrides": {
+    "uuid": "^14.0.0",
+    "sockjs": "^0.3.24",
+    "webpack-dev-server": {
+      "sockjs": {
+        "uuid": "^14.0.0"
+      }
+    }
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch *.js",
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "git checkout gh-pages && git merge main --no-edit && webpack --config webpack.prod.js",
+    "deploy": "git add dist -f && git commit -m \"Deployment commit\" && git subtree push --prefix dist origin gh-pages && git checkout main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drawdlu/webpack-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drawdlu/webpack-template/issues"
+  },
+  "homepage": "https://github.com/drawdlu/webpack-template#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.5",
+    "@eslint/js": "^10.0.1",
+    "css-loader": "^7.1.2",
+    "eslint": "^10.2.1",
+    "eslint-plugin-jest": "^29.15.2",
+    "globals": "^17.5.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.5",
+    "jest": "^30.4.1",
+    "prettier": "3.8.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-merge": "^6.0.1"
+  }
+}
