@@ -1,4 +1,4 @@
-export function createShip(size) {
+export default function createShip(size) {
   let length = size;
   let hits = 0;
 

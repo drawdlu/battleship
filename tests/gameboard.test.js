@@ -1,5 +1,5 @@
-import { createGameBoard } from "../src/factories/gameboard";
-import { createShip } from "../src/factories/ship";
+import createGameBoard from "../src/factories/gameboard";
+import createShip from "../src/factories/ship";
 
 const coords = [
   [0, 0],

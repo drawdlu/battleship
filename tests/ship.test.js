@@ -1,4 +1,4 @@
-import { createShip } from "../src/factories/ship.js";
+import createShip from "../src/factories/ship.js";
 
 const shipLength = 1;
 const newShip = createShip(shipLength);

@@ -1,4 +1,4 @@
-export function createGameBoard() {
+export default function createGameBoard() {
   const cells = Array.from(Array(10), () =>
     Array.from(Array(10), () => ({
       ship: null,
