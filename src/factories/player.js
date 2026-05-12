@@ -1,11 +1,11 @@
 import createGameBoard from "./gameboard";
 
-export default function createPlayer(name) {
-  const playerName = name;
-  const gameBoard = createGameBoard();
+export default function createPlayer(playerName) {
+  const name = playerName;
+  const board = createGameBoard();
 
   return {
-    board: gameBoard,
+    board: board,
     get name() {
       return playerName;
     },
