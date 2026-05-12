@@ -37,9 +37,16 @@ export default function createGameBoard() {
     return false;
   };
 
+  const copyBoard = () => {
+    return cells.map((x) => x.map((cell) => ({ ...cell })));
+  };
+
   return {
     placeShip,
     receiveAttack,
     allShipsSunk,
+    get cells() {
+      return copyBoard();
+    },
   };
 }

@@ -47,3 +47,13 @@ test("Checks if all ships are sunk", () => {
   board.receiveAttack(coords[1]);
   expect(board.allShipsSunk()).toBeTruthy();
 });
+
+test("Returns a deep copy of the board", () => {
+  const board = createGameBoard();
+  const copy1 = board.cells;
+  const copy2 = board.cells;
+
+  expect(copy1 === copy2).toBeFalsy();
+  expect(copy1[0] === copy2[0]).toBeFalsy();
+  expect(copy1[0][0] === copy2[0][0]).toBeFalsy();
+});
