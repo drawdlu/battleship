@@ -5,33 +5,36 @@ import createShip from "../factories/ship";
 import { defaultCoords } from "./helper";
 import { renderPlayerBoard } from "../ui/board";
 
-export default function startGame() {
-  const player = createPlayer("Default");
-  const computer = createComputerPlayer();
-  const currentPlayer = player;
-  const opponentPlayer = computer;
+export default function createGame() {
+  const player1 = createPlayer("Default Player");
+  const player2 = createComputerPlayer();
+  let currentPlayer = player1;
+  let opponentPlayer = player2;
 
-  setupShips(player, computer);
+  const renderBoards = (player, opponent) => {
+    renderPlayerBoard(player, true);
+    renderPlayerBoard(opponent, false);
+  };
 
-  renderBoards(currentPlayer, opponentPlayer);
-}
+  const setupShips = (player1, player2) => {
+    setupPlayerShips(player1);
+    setupPlayerShips(player2);
+  };
 
-function renderBoards(player, opponent) {
-  renderPlayerBoard(player, true);
-  renderPlayerBoard(opponent, false);
-}
+  const setupPlayerShips = (player) => {
+    defaultCoords.forEach((val) => {
+      const ship = createShip(val.length);
 
-function setupShips(player1, player2) {
-  setupPlayerShips(player1);
-  setupPlayerShips(player2);
-}
-
-function setupPlayerShips(player) {
-  defaultCoords.forEach((val) => {
-    const ship = createShip(val.length);
-
-    val.coords.forEach((coord) => {
-      player.board.placeShip(ship, coord);
+      val.coords.forEach((coord) => {
+        player.board.placeShip(ship, coord);
+      });
     });
-  });
+  };
+
+  const setupBoard = () => {
+    setupShips(player1, player2);
+    renderBoards(currentPlayer, opponentPlayer);
+  };
+
+  setupBoard();
 }

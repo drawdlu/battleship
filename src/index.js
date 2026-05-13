@@ -1,4 +1,4 @@
 import "./styles.css";
-import startGame from "./modules/gameloop";
+import createGame from "./modules/gameloop";
 
-startGame();
+const game = createGame();
