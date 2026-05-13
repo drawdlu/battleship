@@ -36,5 +36,35 @@ export default function createGame() {
     renderBoards(currentPlayer, opponentPlayer);
   };
 
+  const attackMissed = () => {
+    if (currentPlayer.name) {
+      console.log("Computer Attacks");
+    }
+
+    // changePlayers();
+  };
+
+  const attackHits = () => {
+    if (!currentPlayer.name) {
+      console.log("Computer Attacks again");
+    } else {
+      console.log("Player attacks again");
+    }
+  };
+
+  const changePlayers = () => {
+    const temp = currentPlayer;
+    currentPlayer = opponentPlayer;
+    opponentPlayer = currentPlayer;
+  };
+
   setupBoard();
+
+  return {
+    get opponentPlayer() {
+      return opponentPlayer;
+    },
+    attackMissed,
+    attackHits,
+  };
 }
