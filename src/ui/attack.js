@@ -21,20 +21,19 @@ function extractNum(letter, string) {
   return Number(regex.exec(string)[1]);
 }
 
-function transmitAttack(coords, target) {
+export function transmitAttack(coords, target) {
   try {
     const opponent = game.opponentPlayer;
     const shipPresent = opponent.board.receiveAttack(coords);
+    renderAttack(target);
 
     if (shipPresent) {
       game.attackHits();
     } else {
       game.attackMissed();
     }
-
-    renderAttack(target);
   } catch (err) {
-    console.log("Already attacked");
+    console.log(err + coords);
   }
 }
 

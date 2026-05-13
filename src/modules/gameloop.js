@@ -4,6 +4,7 @@ import createGameBoard from "../factories/gameboard";
 import createShip from "../factories/ship";
 import { defaultCoords } from "./helper";
 import { renderPlayerBoard } from "../ui/board";
+import { transmitAttack } from "../ui/attack";
 
 export default function createGame() {
   const player1 = createPlayer("Default Player");
@@ -37,25 +38,35 @@ export default function createGame() {
   };
 
   const attackMissed = () => {
-    if (currentPlayer.name) {
-      console.log("Computer Attacks");
-    }
+    changePlayers();
 
-    // changePlayers();
+    if (computerTurn()) {
+      computerAttack();
+    }
   };
 
   const attackHits = () => {
-    if (!currentPlayer.name) {
-      console.log("Computer Attacks again");
-    } else {
-      console.log("Player attacks again");
+    if (computerTurn()) {
+      computerAttack();
     }
   };
 
   const changePlayers = () => {
     const temp = currentPlayer;
     currentPlayer = opponentPlayer;
-    opponentPlayer = currentPlayer;
+    opponentPlayer = temp;
+  };
+
+  const computerTurn = () => {
+    return !currentPlayer.name;
+  };
+
+  const computerAttack = () => {
+    const coords = currentPlayer.getAttackCoords();
+    const target = document.querySelector(
+      `.player .cell.x-${coords[1]}.y-${coords[0]}`,
+    );
+    transmitAttack(coords, target);
   };
 
   setupBoard();
@@ -66,5 +77,6 @@ export default function createGame() {
     },
     attackMissed,
     attackHits,
+    computerTurn,
   };
 }

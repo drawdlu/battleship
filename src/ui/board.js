@@ -1,5 +1,6 @@
 import { createDivWithClass } from "../modules/helper";
 import { attackInitiated } from "./attack";
+import { game } from "../index";
 
 function createCell(x, y, ownBoard) {
   const cell = createDivWithClass("cell", `x-${x}`, `y-${y}`);
