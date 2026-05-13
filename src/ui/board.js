@@ -13,6 +13,8 @@ export function renderPlayerBoard(player, ownBoard) {
       div.append(cell);
     }
   }
+
+  renderName(player, ownBoard);
 }
 
 function addShipToCell(x, y, cell, board) {
@@ -25,4 +27,20 @@ function getBoardDiv(ownBoard) {
   const divClass = ownBoard ? ".player.board" : ".opponent.board";
 
   return document.querySelector(divClass);
+}
+
+function renderName(player, ownBoard) {
+  const divClass = getPlayerNameDivClass(ownBoard);
+  const div = document.querySelector(divClass);
+  const name = getPlayerName(player);
+
+  div.textContent = name;
+}
+
+function getPlayerNameDivClass(ownBoard) {
+  return ownBoard ? ".player-name" : ".opponent-name";
+}
+
+function getPlayerName(player) {
+  return player.name ? player.name : "Computer";
 }
