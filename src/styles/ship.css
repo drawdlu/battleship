@@ -1,0 +1,60 @@
+.ship {
+  --ship-height: 46px;
+  --ship-width-1: 46px;
+  background-color: darkcyan;
+  position: absolute;
+  height: var(--ship-height);
+  z-index: 3;
+}
+
+.ship.two { 
+  width: calc((var(--ship-width-1) * 2) + 4px);
+  top: 2px;
+  left: 2px;
+}
+
+.ship.three {
+  width: calc((var(--ship-width-1) * 3) + 8px);
+}
+
+.ship.three.first {
+  top: 52px;
+  left: 2px;
+}
+
+.ship.three.second {
+  top: 102px;
+  left: 302px;
+}
+
+.ship.four {
+  width: calc((var(--ship-width-1) * 4) + 12px);
+  top: 152px;
+  left: 2px;
+}
+
+.ship.five {
+  width: calc((var(--ship-width-1) * 5) + 16px);
+  top: 202px;
+  left: 202px;
+}
+
+.dragging {
+  pointer-events: none;
+}
+
+.vertical-2 {
+  transform: rotate(90deg) translate(25px, 25px);
+}
+
+.vertical-3 {
+  transform: rotate(90deg) translate(50px, 50px);
+}
+
+.vertical-4 {
+  transform: rotate(90deg) translate(75px, 75px);
+}
+
+.vertical-5 {
+  transform: rotate(90deg) translate(100px, 100px);
+}

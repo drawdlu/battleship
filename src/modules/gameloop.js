@@ -6,6 +6,7 @@ import { defaultCoords } from "./helper";
 import { renderPlayerBoard } from "../ui/board";
 import { transmitAttack } from "../ui/attack";
 import { announceWinner } from "../ui/overlay";
+import { listenToShipDrag } from "../ui/ships";
 
 export default function createGame() {
   const player1 = createPlayer("Default Player");
@@ -19,8 +20,8 @@ export default function createGame() {
   };
 
   const setupShips = (player1, player2) => {
-    setupPlayerShips(player1);
-    setupPlayerShips(player2);
+    // setupPlayerShips(player1);
+    // setupPlayerShips(player2);
   };
 
   const setupPlayerShips = (player) => {
@@ -34,8 +35,9 @@ export default function createGame() {
   };
 
   const setupBoard = () => {
-    setupShips(player1, player2);
     renderBoards(currentPlayer, opponentPlayer);
+    listenToShipDrag();
+    setupShips(player1, player2);
   };
 
   const attackMissed = () => {
@@ -85,6 +87,5 @@ export default function createGame() {
     },
     attackMissed,
     attackHits,
-    computerTurn,
   };
 }

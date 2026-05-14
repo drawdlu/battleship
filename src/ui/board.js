@@ -51,6 +51,23 @@ function addAttackListener(board, ownBoard) {
   }
 }
 
+function getCell(target) {
+  return target.closest(".cell");
+}
+
+function createXDiv() {
+  const div = createDivWithClass("attacked");
+  div.textContent = "X";
+
+  return div;
+}
+
+function addShipHitClass(cell, hit) {
+  if (hit) {
+    cell.classList.add("hit");
+  }
+}
+
 export function renderPlayerBoard(player, ownBoard) {
   const board = player.board.cells;
   const div = getBoardDiv(ownBoard);
@@ -73,21 +90,4 @@ export function renderAttack(target, shipPresent) {
   const cell = getCell(target);
   cell.append(createXDiv());
   addShipHitClass(cell, shipPresent);
-}
-
-function getCell(target) {
-  return target.closest(".cell");
-}
-
-function createXDiv() {
-  const div = createDivWithClass("attacked");
-  div.textContent = "X";
-
-  return div;
-}
-
-function addShipHitClass(cell, hit) {
-  if (hit) {
-    cell.classList.add("hit");
-  }
 }
