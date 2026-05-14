@@ -25,7 +25,7 @@ export function transmitAttack(coords, target) {
   try {
     const opponent = game.opponentPlayer;
     const shipPresent = opponent.board.receiveAttack(coords);
-    renderAttack(target);
+    renderAttack(target, shipPresent);
 
     if (shipPresent) {
       game.attackHits();

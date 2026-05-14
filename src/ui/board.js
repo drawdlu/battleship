@@ -69,9 +69,10 @@ export function renderPlayerBoard(player, ownBoard) {
   renderName(player, ownBoard);
 }
 
-export function renderAttack(target) {
+export function renderAttack(target, shipPresent) {
   const cell = getCell(target);
   cell.append(createXDiv());
+  addShipHitClass(cell, shipPresent);
 }
 
 function getCell(target) {
@@ -79,8 +80,14 @@ function getCell(target) {
 }
 
 function createXDiv() {
-  const div = createDivWithClass("hit");
+  const div = createDivWithClass("attacked");
   div.textContent = "X";
 
   return div;
+}
+
+function addShipHitClass(cell, hit) {
+  if (hit) {
+    cell.classList.add("hit");
+  }
 }
