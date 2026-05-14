@@ -5,6 +5,7 @@ import createShip from "../factories/ship";
 import { defaultCoords } from "./helper";
 import { renderPlayerBoard } from "../ui/board";
 import { transmitAttack } from "../ui/attack";
+import { announceWinner } from "../ui/overlay";
 
 export default function createGame() {
   const player1 = createPlayer("Default Player");
@@ -46,9 +47,16 @@ export default function createGame() {
   };
 
   const attackHits = () => {
-    if (computerTurn()) {
+    if (playerWon()) {
+      announceWinner(currentPlayer);
+      // stop game
+    } else if (computerTurn()) {
       computerAttack();
     }
+  };
+
+  const playerWon = () => {
+    return opponentPlayer.board.allShipsSunk();
   };
 
   const changePlayers = () => {
