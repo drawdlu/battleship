@@ -29,7 +29,7 @@
 
 .board .attacked {
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 .board .cell.hit {
