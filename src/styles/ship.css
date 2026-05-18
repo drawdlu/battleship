@@ -39,8 +39,13 @@
   left: 202px;
 }
 
-.dragging {
+.ship.dragging {
   pointer-events: none;
+  opacity: .9;
+}
+
+.ship.can-move:hover {
+  cursor: pointer;
 }
 
 .vertical-2 {
