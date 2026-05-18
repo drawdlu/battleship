@@ -17,6 +17,7 @@ export function listenToShipDrag() {
 }
 
 function dragShip(e, ship) {
+  e.preventDefault();
   recordShipValues(e.currentTarget);
   startX = e.clientX;
   startY = e.clientY;

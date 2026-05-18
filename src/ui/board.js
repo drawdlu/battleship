@@ -9,7 +9,15 @@ function createCell(x, y, ownBoard) {
     addClickableDivToCell(cell);
   }
 
+  preventDragging(cell);
+
   return cell;
+}
+
+function preventDragging(cell) {
+  cell.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
 }
 
 function addClickableDivToCell(cell) {
