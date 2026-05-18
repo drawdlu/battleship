@@ -36,6 +36,8 @@ function moveShip(e) {
   newX = startX - e.clientX;
   newY = startY - e.clientY;
 
+  console.log(window.scrollY);
+
   startX = e.clientX;
   startY = e.clientY;
 
@@ -50,7 +52,10 @@ function moveShip(e) {
 function updateClosestElement(newShipY, newShipX) {
   const boardDiv = document.querySelector(".player.board");
   const position = getShipPositionFromWindow(newShipY, newShipX);
-  closestElement = document.elementFromPoint(position.x, position.y);
+  closestElement = document.elementFromPoint(
+    position.x - window.scrollX,
+    position.y - window.scrollY,
+  );
 }
 
 // 20 is just a little less than half the cell size
