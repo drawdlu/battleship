@@ -111,6 +111,7 @@ function snapShipOnBoard(e) {
 
   const cell = returnClosestPlayerCell(closestElement);
   const vertical = divClassContains(currentShip, "vertical");
+  console.log(closestElement);
 
   if (cell && checkIfMoveValid(cell, currentShip, vertical)) {
     moveShipToCellPosition(currentShip, cell);
