@@ -6,7 +6,7 @@ import { defaultCoords } from "./helper";
 import { renderPlayerBoard } from "../ui/board";
 import { transmitAttack } from "../ui/attack";
 import { announceWinner } from "../ui/overlay";
-import { listenToShipDrag } from "../ui/ships";
+import { listenToShip } from "../ui/ships";
 
 export default function createGame() {
   const player1 = createPlayer("Default Player");
@@ -36,7 +36,7 @@ export default function createGame() {
 
   const setupBoard = () => {
     renderBoards(currentPlayer, opponentPlayer);
-    listenToShipDrag();
+    listenToShip();
     setupShips(player1, player2);
   };
 

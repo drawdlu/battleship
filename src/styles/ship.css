@@ -5,6 +5,7 @@
   position: absolute;
   height: var(--ship-height);
   z-index: 3;
+  transition: transform .5s;
 }
 
 .ship.two { 
@@ -46,6 +47,7 @@
 .ship.dragging {
   pointer-events: none;
   opacity: .9;
+  z-index: 4;
 }
 
 .ship.can-move:hover {
@@ -69,6 +71,16 @@
 }
 
 .ship.can-move .rotate {
+  display: none;
+}
+
+.ship.can-move .rotate.dragging {
+  pointer-events: none;
+}
+
+.ship.can-move .rotate.active {
+  position: relative;
+  display: block;
   background-image: url("../assets/images/rotate-svgrepo-com.svg");
   background-repeat: no-repeat;
   background-size: 1.5rem;
@@ -77,6 +89,12 @@
   width: 1.5rem;
   position: absolute;
   top: 11px;
+  transition-duration: .5s; 
+}
+
+.ship.can-move .rotate.active:hover {
+  transform: rotate(360deg);
+  transition-duration: 3s; 
 }
 
 .ship.can-move.two .rotate {

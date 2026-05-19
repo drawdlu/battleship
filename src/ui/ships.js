@@ -8,18 +8,32 @@ let newX = 0,
 let currentShip = null,
   closestElement = null;
 
-export function listenToShipDrag() {
+export function listenToShip() {
   const ships = document.querySelectorAll(".ship");
 
   ships.forEach((ship) => {
+    const rotate = ship.querySelector(".rotate");
     ship.addEventListener("mousedown", dragShip);
+    rotate.addEventListener("click", rotateShip);
   });
+}
+
+function rotateShip(e) {
+  const ship = e.currentTarget.closest(".ship");
+  const size = getShipSize(ship);
+  const rotateClass = "vertical-" + size;
+  const vertical = !divClassContains(ship, "vertical");
+
+  if (checkIfMoveValid(ship, ship, vertical)) {
+    ship.classList.toggle(rotateClass);
+  }
 }
 
 function dragShip(e) {
   if (divClassContains(e.target, "rotate")) {
     return;
   }
+
   e.preventDefault();
   recordShipValues(e.currentTarget);
   startX = e.clientX;
@@ -27,6 +41,15 @@ function dragShip(e) {
 
   document.addEventListener("mousemove", moveShip);
   document.addEventListener("mouseup", snapShipOnBoard);
+  toggleDraggingFromRotate();
+}
+
+function toggleDraggingFromRotate() {
+  const rotateDivs = document.querySelectorAll(".rotate");
+
+  rotateDivs.forEach((rotate) => {
+    rotate.classList.toggle("dragging");
+  });
 }
 
 function recordShipValues(ship) {
@@ -73,19 +96,21 @@ function snapShipOnBoard(e) {
   document.removeEventListener("mouseup", snapShipOnBoard);
 
   const cell = returnClosestPlayerCell(closestElement);
+  const vertical = divClassContains(currentShip, "vertical");
 
-  if (cell && checkIfMoveValid(cell, currentShip)) {
+  if (cell && checkIfMoveValid(cell, currentShip, vertical)) {
     moveShipToCellPosition(cell);
   } else {
     moveBackToOriginalPosition();
   }
   currentShip.classList.remove("dragging");
+  toggleDraggingFromRotate();
 }
 
-function checkIfMoveValid(cell, ship) {
+function checkIfMoveValid(cell, ship, vertical) {
   const size = getShipSize(ship);
   let currentDiv = cell;
-  const add = getDimensionsToAdd(ship);
+  const add = getDimensionsToAdd(ship, vertical);
 
   for (let i = 1; i < size; ++i) {
     const divPos = getElementPosition(currentDiv);
@@ -106,9 +131,8 @@ function checkIfMoveValid(cell, ship) {
 // 20 here has same function as updateClosestElement only this time making sure
 // we are pointing close to the middle of the cell to capture wether it is
 // a ship or a cell if within board
-function getDimensionsToAdd(ship) {
+function getDimensionsToAdd(ship, vertical) {
   const cellSize = 50;
-  const vertical = divClassContains(ship, "vertical");
   const left = vertical ? 20 : cellSize + 20;
   const top = vertical ? cellSize + 20 : 20;
 
