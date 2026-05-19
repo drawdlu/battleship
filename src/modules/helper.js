@@ -50,3 +50,26 @@ export function createDivWithClass(...className) {
   });
   return div;
 }
+
+export function getElementPosition(div) {
+  return div.getBoundingClientRect();
+}
+
+export function getShipSize(ship) {
+  if (divClassContains(ship, "two")) {
+    return 2;
+  } else if (divClassContains(ship, "three")) {
+    return 3;
+  } else if (divClassContains(ship, "four")) {
+    return 4;
+  } else if (divClassContains(ship, "five")) {
+    return 5;
+  }
+}
+
+export function divClassContains(div, string) {
+  const classListString = div.classList.value;
+  const regexp = new RegExp(`${string}`);
+
+  return regexp.test(classListString);
+}

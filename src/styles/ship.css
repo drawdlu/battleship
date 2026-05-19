@@ -8,6 +8,10 @@
   transition: transform .5s;
 }
 
+.ship.randomize {
+  display: none;
+}
+
 .ship.two { 
   --ship-size: 2;
   width: calc((var(--ship-width-1) * var(--ship-size)) + 4px);

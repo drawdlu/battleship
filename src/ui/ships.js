@@ -1,3 +1,9 @@
+import {
+  getElementPosition,
+  getShipSize,
+  divClassContains,
+} from "../modules/helper";
+
 let newX = 0,
   newY = 0,
   startX = 0,
@@ -104,7 +110,7 @@ function snapShipOnBoard(e) {
   const vertical = divClassContains(currentShip, "vertical");
 
   if (cell && checkIfMoveValid(cell, currentShip, vertical)) {
-    moveShipToCellPosition(cell);
+    moveShipToCellPosition(currentShip, cell);
   } else {
     moveBackToOriginalPosition();
   }
@@ -149,33 +155,10 @@ function getDimensionsToAdd(ship, vertical) {
   return { left: left, top: top };
 }
 
-function getElementPosition(div) {
-  return div.getBoundingClientRect();
-}
-
 function isAPlayerCell(div) {
   const playerBoard = document.querySelector(".player.board");
 
   return playerBoard.contains(div) && div.classList.contains("cell");
-}
-
-function getShipSize(ship) {
-  if (divClassContains(ship, "two")) {
-    return 2;
-  } else if (divClassContains(ship, "three")) {
-    return 3;
-  } else if (divClassContains(ship, "four")) {
-    return 4;
-  } else if (divClassContains(ship, "five")) {
-    return 5;
-  }
-}
-
-function divClassContains(div, string) {
-  const classListString = div.classList.value;
-  const regexp = new RegExp(`${string}`);
-
-  return regexp.test(classListString);
 }
 
 function returnClosestPlayerCell(div) {
@@ -189,12 +172,12 @@ function returnClosestPlayerCell(div) {
 
 function checkOverflowAndCollision(closestElement) {}
 
-function moveShipToCellPosition(cell) {
+export function moveShipToCellPosition(ship, cell) {
   const y = cell.offsetTop;
   const x = cell.offsetLeft;
 
-  currentShip.style.top = y + 2 + "px";
-  currentShip.style.left = x + 2 + "px";
+  ship.style.top = y + 2 + "px";
+  ship.style.left = x + 2 + "px";
 }
 
 function moveBackToOriginalPosition() {
