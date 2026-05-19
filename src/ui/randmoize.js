@@ -21,6 +21,7 @@ function randomizeShips() {
 
   ships.forEach((ship) => {
     placeShipOnRandomSpot(ship);
+    ship.classList.remove("border-animation");
   });
   toggleShipRandom();
 }

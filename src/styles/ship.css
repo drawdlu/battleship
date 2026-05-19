@@ -92,7 +92,7 @@
   height: 1.5rem;
   width: 1.5rem;
   position: absolute;
-  top: 11px;
+  top: 10px;
   transition-duration: .5s; 
 }
 
@@ -121,4 +121,16 @@
 
 html.dragging:hover {
   cursor: pointer;
+}
+
+@keyframes red-border {
+ 0% { border: none }
+ 25% { border: solid 2px red;}
+ 50% { border: none }
+ 75% { border: solid 2px red; }
+ 100% { border: none;}
+}
+
+.ship.border-animation {
+  animation: red-border 1s linear 1;
 }

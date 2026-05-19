@@ -29,9 +29,12 @@ function rotateShip(e) {
   const size = getShipSize(ship);
   const rotateClass = "vertical-" + size;
   const vertical = !divClassContains(ship, "vertical");
+  ship.classList.remove("border-animation");
 
   if (checkIfMoveValid(ship, ship, vertical)) {
     ship.classList.toggle(rotateClass);
+  } else {
+    ship.classList.add("border-animation");
   }
 }
 
