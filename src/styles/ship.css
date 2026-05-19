@@ -67,3 +67,30 @@
 .vertical-5 {
   transform: rotate(90deg) translate(100px, 100px);
 }
+
+.ship.can-move .rotate {
+  background-image: url("../assets/images/rotate-svgrepo-com.svg");
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  top: 11px;
+}
+
+.ship.can-move.two .rotate {
+  left: 70px;
+}
+
+.ship.can-move.three .rotate {
+  left: 120px;
+}
+
+.ship.can-move.four .rotate {
+  left: 170px;
+}
+
+.ship.can-move.five .rotate {
+  left: 220px;
+}

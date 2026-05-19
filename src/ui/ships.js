@@ -16,7 +16,10 @@ export function listenToShipDrag() {
   });
 }
 
-function dragShip(e, ship) {
+function dragShip(e) {
+  if (divClassContains(e.target, "rotate")) {
+    return;
+  }
   e.preventDefault();
   recordShipValues(e.currentTarget);
   startX = e.clientX;
