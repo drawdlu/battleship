@@ -112,3 +112,9 @@
 .ship.can-move.five .rotate {
   left: 220px;
 }
+
+/* For dragging cursor */
+
+html.dragging:hover {
+  cursor: pointer;
+}

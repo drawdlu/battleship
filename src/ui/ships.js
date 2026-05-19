@@ -41,7 +41,6 @@ function dragShip(e) {
 
   document.addEventListener("mousemove", moveShip);
   document.addEventListener("mouseup", snapShipOnBoard);
-  toggleDraggingFromRotate();
 }
 
 function toggleDraggingFromRotate() {
@@ -52,11 +51,17 @@ function toggleDraggingFromRotate() {
   });
 }
 
+function toggleDraggingFromPage() {
+  const body = document.querySelector("html");
+
+  body.classList.toggle("dragging");
+}
+
 function recordShipValues(ship) {
   currentShip = ship;
-  currentShip.classList.add("dragging");
   originalY = ship.offsetTop;
   originalX = ship.offsetLeft;
+  toggleDragging();
 }
 
 function moveShip(e) {
@@ -103,8 +108,13 @@ function snapShipOnBoard(e) {
   } else {
     moveBackToOriginalPosition();
   }
-  currentShip.classList.remove("dragging");
+  toggleDragging();
+}
+
+function toggleDragging() {
+  currentShip.classList.toggle("dragging");
   toggleDraggingFromRotate();
+  toggleDraggingFromPage();
 }
 
 function checkIfMoveValid(cell, ship, vertical) {
