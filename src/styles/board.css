@@ -35,3 +35,7 @@
 .board .cell.hit {
   background-color: rgba(255, 0, 0, .5);
 }
+
+.setup-buttons.inactive {
+  visibility: hidden;
+}

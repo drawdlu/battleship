@@ -38,7 +38,7 @@ function rotateShip(e) {
   }
 }
 
-function dragShip(e) {
+export function dragShip(e) {
   if (divClassContains(e.target, "rotate")) {
     return;
   }

@@ -90,7 +90,7 @@ export function renderPlayerBoard(player, ownBoard) {
     }
   }
 
-  addAttackListener(div, ownBoard);
+  // addAttackListener(div, ownBoard);
   renderName(player, ownBoard);
 }
 

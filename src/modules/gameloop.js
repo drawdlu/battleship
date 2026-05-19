@@ -8,6 +8,7 @@ import { transmitAttack } from "../ui/attack";
 import { announceWinner } from "../ui/overlay";
 import { listenToShip } from "../ui/ships";
 import { listenToRandomize, randomizeShips } from "../ui/randmoize";
+import { listenToStart } from "../ui/start";
 
 export default function createGame() {
   const player1 = createPlayer("Default Player");
@@ -25,8 +26,8 @@ export default function createGame() {
     // setupPlayerShips(player2);
   };
 
-  const setupPlayerShips = (player) => {
-    defaultCoords.forEach((val) => {
+  const setupPlayerShips = (coords, player) => {
+    coords.forEach((val) => {
       const ship = createShip(val.length);
 
       val.coords.forEach((coord) => {
@@ -40,7 +41,7 @@ export default function createGame() {
     randomizeShips();
     listenToShip();
     listenToRandomize();
-    setupShips(player1, player2);
+    listenToStart();
   };
 
   const attackMissed = () => {

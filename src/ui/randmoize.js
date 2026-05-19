@@ -2,6 +2,7 @@ import {
   getElementPosition,
   getShipSize,
   divClassContains,
+  getAddDirection,
 } from "../modules/helper";
 
 import { moveShipToCellPosition } from "./ships";
@@ -56,14 +57,6 @@ function addCoordsToSet(coords, ship) {
     coords.x += add.x;
     coords.y += add.y;
   }
-}
-
-function getAddDirection(ship) {
-  const vertical = divClassContains(ship, "vertical");
-  const addY = vertical ? 1 : 0;
-  const addX = vertical ? 0 : 1;
-
-  return { x: addX, y: addY };
 }
 
 function shipWillFit(ship, coords) {
