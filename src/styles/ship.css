@@ -15,8 +15,6 @@
 .ship.two { 
   --ship-size: 2;
   width: calc((var(--ship-width-1) * var(--ship-size)) + 4px);
-  top: 2px;
-  left: 2px;
 }
 
 .ship.three {
@@ -24,28 +22,14 @@
   width: calc((var(--ship-width-1) * var(--ship-size)) + 8px);
 }
 
-.ship.three.first {
-  top: 52px;
-  left: 2px;
-}
-
-.ship.three.second {
-  top: 102px;
-  left: 302px;
-}
-
 .ship.four {
   --ship-size: 4;
   width: calc((var(--ship-width-1) * var(--ship-size)) + 12px);
-  top: 152px;
-  left: 2px;
 }
 
 .ship.five {
   --ship-size: 5;
   width: calc((var(--ship-width-1) * var(--ship-size)) + 16px);
-  top: 202px;
-  left: 202px;
 }
 
 .ship.dragging {

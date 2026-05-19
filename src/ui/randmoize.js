@@ -14,7 +14,7 @@ export function listenToRandomize() {
   randomBtn.addEventListener("click", randomizeShips);
 }
 
-function randomizeShips() {
+export function randomizeShips() {
   shipCoords.clear();
   toggleShipRandom();
   const ships = document.querySelectorAll(".ship");

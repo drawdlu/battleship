@@ -7,7 +7,7 @@ import { renderPlayerBoard } from "../ui/board";
 import { transmitAttack } from "../ui/attack";
 import { announceWinner } from "../ui/overlay";
 import { listenToShip } from "../ui/ships";
-import { listenToRandomize } from "../ui/randmoize";
+import { listenToRandomize, randomizeShips } from "../ui/randmoize";
 
 export default function createGame() {
   const player1 = createPlayer("Default Player");
@@ -37,6 +37,7 @@ export default function createGame() {
 
   const setupBoard = () => {
     renderBoards(currentPlayer, opponentPlayer);
+    randomizeShips();
     listenToShip();
     listenToRandomize();
     setupShips(player1, player2);
