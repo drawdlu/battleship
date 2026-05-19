@@ -71,7 +71,7 @@ function snapShipOnBoard(e) {
 
   const cell = returnClosestPlayerCell(closestElement);
 
-  if (cell && checkIfMoveValid()) {
+  if (cell && checkIfMoveValid(cell, currentShip)) {
     moveShipToCellPosition(cell);
   } else {
     moveBackToOriginalPosition();
@@ -79,10 +79,10 @@ function snapShipOnBoard(e) {
   currentShip.classList.remove("dragging");
 }
 
-function checkIfMoveValid(cell) {
-  const size = getShipSize();
-  let currentDiv = closestElement;
-  const add = getDimensionsToAdd();
+function checkIfMoveValid(cell, ship) {
+  const size = getShipSize(ship);
+  let currentDiv = cell;
+  const add = getDimensionsToAdd(ship);
 
   for (let i = 1; i < size; ++i) {
     const divPos = getElementPosition(currentDiv);
@@ -103,9 +103,9 @@ function checkIfMoveValid(cell) {
 // 20 here has same function as updateClosestElement only this time making sure
 // we are pointing close to the middle of the cell to capture wether it is
 // a ship or a cell if within board
-function getDimensionsToAdd() {
+function getDimensionsToAdd(ship) {
   const cellSize = 50;
-  const vertical = shipClassContains("vertical");
+  const vertical = divClassContains(ship, "vertical");
   const left = vertical ? 20 : cellSize + 20;
   const top = vertical ? cellSize + 20 : 20;
 
@@ -122,20 +122,20 @@ function isAPlayerCell(div) {
   return playerBoard.contains(div) && div.classList.contains("cell");
 }
 
-function getShipSize() {
-  if (shipClassContains("two")) {
+function getShipSize(ship) {
+  if (divClassContains(ship, "two")) {
     return 2;
-  } else if (shipClassContains("three")) {
+  } else if (divClassContains(ship, "three")) {
     return 3;
-  } else if (shipClassContains("four")) {
+  } else if (divClassContains(ship, "four")) {
     return 4;
-  } else if (shipClassContains("five")) {
+  } else if (divClassContains(ship, "five")) {
     return 5;
   }
 }
 
-function shipClassContains(string) {
-  const classListString = currentShip.classList.value;
+function divClassContains(div, string) {
+  const classListString = div.classList.value;
   const regexp = new RegExp(`${string}`);
 
   return regexp.test(classListString);
