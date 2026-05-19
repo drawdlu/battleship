@@ -36,7 +36,6 @@ function placeShipOnRandomSpot(ship) {
       shipPlaced = true;
       moveShip(randomStartingCoords, ship);
       addCoordsToSet(randomStartingCoords, ship);
-      console.log(shipCoords);
     }
   }
 }

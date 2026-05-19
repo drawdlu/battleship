@@ -31,7 +31,7 @@ function rotateShip(e) {
   const vertical = !divClassContains(ship, "vertical");
   ship.classList.remove("border-animation");
 
-  if (checkIfMoveValid(ship, ship, vertical)) {
+  if (checkIfMoveValid(ship, ship, vertical, true)) {
     ship.classList.toggle(rotateClass);
   } else {
     ship.classList.add("border-animation");
@@ -170,7 +170,18 @@ function returnClosestPlayerCell(div) {
     return null;
   }
 
+  if (shipInDiv(div)) {
+    return null;
+  }
+
   return div.closest(".player .cell");
+}
+
+function shipInDiv(div) {
+  const divPos = getElementPosition(div);
+  const cell = document.elementFromPoint(divPos.left + 20, divPos.top + 20);
+
+  return cell.classList.contains("ship");
 }
 
 function checkOverflowAndCollision(closestElement) {}

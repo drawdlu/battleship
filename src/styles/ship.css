@@ -4,7 +4,7 @@
   background-color: darkcyan;
   position: absolute;
   height: var(--ship-height);
-  z-index: 3;
+  z-index: 4;
   transition: transform .5s;
 }
 
@@ -35,7 +35,7 @@
 .ship.dragging {
   pointer-events: none;
   opacity: .9;
-  z-index: 4;
+  z-index: 7;
 }
 
 .ship.can-move:hover {
