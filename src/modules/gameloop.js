@@ -21,16 +21,12 @@ export default function createGame() {
     renderPlayerBoard(opponent, false);
   };
 
-  const setupShips = (player1, player2) => {
-    // setupPlayerShips(player1);
-    // setupPlayerShips(player2);
-  };
+  const setupPlayerShips = (coords, playerNumber) => {
+    const player = playerNumber == 1 ? player1 : player2;
+    coords.forEach((shipCoords) => {
+      const ship = createShip(shipCoords.length);
 
-  const setupPlayerShips = (coords, player) => {
-    coords.forEach((val) => {
-      const ship = createShip(val.length);
-
-      val.coords.forEach((coord) => {
+      shipCoords.forEach((coord) => {
         player.board.placeShip(ship, coord);
       });
     });
@@ -91,5 +87,6 @@ export default function createGame() {
     },
     attackMissed,
     attackHits,
+    setupPlayerShips,
   };
 }

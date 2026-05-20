@@ -4,6 +4,9 @@ import {
   getElementPosition,
   getAddDirection,
 } from "../modules/helper";
+import { game } from "../index";
+import { defaultCoords } from "../modules/helper";
+import { addAttackListener, getBoardDiv } from "./board";
 
 export function listenToStart() {
   const startBtn = document.querySelector("button.start");
@@ -21,9 +24,15 @@ function handleStart() {
     shipCoords.push(getShipCoords(ship));
   });
 
-  console.log(shipCoords);
-
   removeStartRandomizeButtons();
+
+  setupShips(shipCoords);
+  addAttackListener(getBoardDiv(false));
+}
+
+function setupShips(coords) {
+  game.setupPlayerShips(coords, 1);
+  game.setupPlayerShips(defaultCoords, 2);
 }
 
 function toggleShipZIndex(ship) {

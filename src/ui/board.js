@@ -31,7 +31,7 @@ function addShipToCell(x, y, cell, board) {
   }
 }
 
-function getBoardDiv(ownBoard) {
+export function getBoardDiv(ownBoard) {
   const divClass = ownBoard ? ".player.board" : ".opponent.board";
 
   return document.querySelector(divClass);
@@ -53,10 +53,8 @@ function getPlayerName(player) {
   return player.name ? player.name : "Computer";
 }
 
-function addAttackListener(board, ownBoard) {
-  if (!ownBoard) {
-    board.addEventListener("click", attackInitiated);
-  }
+export function addAttackListener(board) {
+  board.addEventListener("click", attackInitiated);
 }
 
 function getCell(target) {
