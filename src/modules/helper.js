@@ -62,10 +62,9 @@ export function divClassContains(div, string) {
   return regexp.test(classListString);
 }
 
-export function getAddDirection(ship) {
-  const vertical = divClassContains(ship, "vertical");
-  const addY = vertical ? 1 : 0;
-  const addX = vertical ? 0 : 1;
+export function getAddDirection(isVertical) {
+  const addY = isVertical ? 1 : 0;
+  const addX = isVertical ? 0 : 1;
 
   return { x: addX, y: addY };
 }

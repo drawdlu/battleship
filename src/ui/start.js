@@ -3,6 +3,7 @@ import {
   getShipSize,
   getElementPosition,
   getAddDirection,
+  divClassContains,
 } from "../modules/helper";
 import { game } from "../index";
 import { defaultCoords } from "../modules/helper";
@@ -47,7 +48,8 @@ function removeStartRandomizeButtons() {
 
 function getShipCoords(ship) {
   const shipSize = getShipSize(ship);
-  const add = getAddDirection(ship);
+  const vertical = divClassContains(ship, "vertical");
+  const add = getAddDirection(vertical);
   let currentCoords = getCellCoordsInFront(ship);
   const coords = [];
 
