@@ -61,7 +61,7 @@ function getSortedShipDivs() {
   return shipArr;
 }
 
-function getSortedRandomShipCoords() {
+export function getSortedRandomShipCoords() {
   const shipCoords = [];
   const shipSizes = [2, 3, 3, 4, 5];
   const shipCount = shipSizes.length;

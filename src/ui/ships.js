@@ -184,8 +184,6 @@ function shipInDiv(div) {
   return cell.classList.contains("ship");
 }
 
-function checkOverflowAndCollision(closestElement) {}
-
 export function moveShipToCellPosition(ship, cell) {
   const y = cell.offsetTop;
   const x = cell.offsetLeft;

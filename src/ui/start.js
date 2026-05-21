@@ -6,8 +6,8 @@ import {
   divClassContains,
 } from "../modules/helper";
 import { game } from "../index";
-import { defaultCoords } from "../modules/helper";
 import { addAttackListener, getBoardDiv } from "./board";
+import { getSortedRandomShipCoords } from "./randmoize";
 
 export function listenToStart() {
   const startBtn = document.querySelector("button.start");
@@ -33,7 +33,7 @@ function handleStart() {
 
 function setupShips(coords) {
   game.setupPlayerShips(coords, 1);
-  game.setupPlayerShips(defaultCoords, 2);
+  game.setupPlayerShips(getSortedRandomShipCoords(), 2);
 }
 
 function toggleShipZIndex(ship) {
