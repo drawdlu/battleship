@@ -9,10 +9,10 @@ import { game } from "../index";
 import { addAttackListener, getBoardDiv } from "./board";
 import { getSortedRandomShipCoords } from "./randmoize";
 
-export function listenToStart() {
-  const startBtn = document.querySelector("button.start");
+export function listenToReady() {
+  const readyBtn = document.querySelector("button.ready");
 
-  startBtn.addEventListener("click", handleStart);
+  readyBtn.addEventListener("click", handleStart);
 }
 
 function handleStart() {

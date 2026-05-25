@@ -8,10 +8,11 @@ import { transmitAttack } from "../ui/attack";
 import { announceWinner } from "../ui/overlay";
 import { listenToShip } from "../ui/ships";
 import { listenToRandomize, randomizeShips } from "../ui/randmoize";
-import { listenToStart } from "../ui/start";
+import { listenToReady } from "../ui/ready";
+import { renderOptions } from "../ui/overlay";
 
 export default function createGame() {
-  const player1 = createPlayer("Default Player");
+  const player1 = createPlayer("Player");
   const player2 = createComputerPlayer();
   let currentPlayer = player1;
   let opponentPlayer = player2;
@@ -37,7 +38,7 @@ export default function createGame() {
     randomizeShips();
     listenToShip();
     listenToRandomize();
-    listenToStart();
+    listenToReady();
   };
 
   const attackMissed = () => {
@@ -80,6 +81,7 @@ export default function createGame() {
   };
 
   setupBoard();
+  renderOptions();
 
   return {
     get opponentPlayer() {
