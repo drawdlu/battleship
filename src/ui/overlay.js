@@ -22,6 +22,7 @@ export function renderOptions() {
   dialog.showModal();
   listenToGameTypeChange();
   updateInputs();
+  listenToContinue();
 }
 
 function updateInputs() {
@@ -76,4 +77,29 @@ function showPlayer2Input() {
   const inputDiv = getPlayer2InputDiv();
 
   inputDiv.classList.remove("hide");
+}
+
+function listenToContinue() {
+  const form = document.querySelector("dialog#start-options form");
+
+  form.addEventListener("submit", handleGameStart);
+}
+
+function handleGameStart(e) {
+  e.preventDefault();
+  closeGameOptionsDialog();
+
+  const data = new FormData(e.currentTarget);
+
+  if (data.get("opponent") === "computer") {
+    game.setupGame(data.get("player-1-name"));
+  } else {
+    game.setupGame(data.get("player-1-name"), data.get("player-2-name"));
+  }
+}
+
+function closeGameOptionsDialog() {
+  const gameOptionsDialog = document.querySelector("dialog#start-options");
+
+  gameOptionsDialog.close();
 }

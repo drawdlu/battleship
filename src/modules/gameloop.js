@@ -12,10 +12,7 @@ import { listenToReady } from "../ui/ready";
 import { renderOptions } from "../ui/overlay";
 
 export default function createGame() {
-  const player1 = createPlayer("Player");
-  const player2 = createComputerPlayer();
-  let currentPlayer = player1;
-  let opponentPlayer = player2;
+  let player1, player2, currentPlayer, opponentPlayer;
 
   const renderBoards = (player, opponent) => {
     renderPlayerBoard(player, true);
@@ -80,7 +77,23 @@ export default function createGame() {
     transmitAttack(coords, target);
   };
 
-  setupBoard();
+  const setupGame = (nameA, nameB) => {
+    createPlayers(nameA, nameB);
+    setupBoard();
+  };
+
+  const createPlayers = (player1Name, player2Name) => {
+    if (player2Name) {
+      player2 = createPlayer(player2Name);
+    } else {
+      player2 = createComputerPlayer();
+    }
+
+    player1 = createPlayer(player1Name);
+    currentPlayer = player1;
+    opponentPlayer = player2;
+  };
+
   renderOptions();
 
   return {
@@ -90,5 +103,6 @@ export default function createGame() {
     attackMissed,
     attackHits,
     setupPlayerShips,
+    setupGame,
   };
 }
