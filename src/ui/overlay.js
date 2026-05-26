@@ -91,11 +91,24 @@ function handleGameStart(e) {
 
   const data = new FormData(e.currentTarget);
 
-  if (data.get("opponent") === "computer") {
-    game.setupGame(data.get("player-1-name"));
-  } else {
-    game.setupGame(data.get("player-1-name"), data.get("player-2-name"));
+  const names = getPlayerNames(data);
+
+  game.setupGame(names.playerOne, names.playerTwo);
+}
+
+function getPlayerNames(data) {
+  const playerOne = getNameValue(data.get("player-1-name"), 1);
+  let playerTwo = null;
+
+  if (data.get("opponent") === "player") {
+    playerTwo = getNameValue(data.get("player-2-name"), 2);
   }
+
+  return { playerOne: playerOne, playerTwo: playerTwo };
+}
+
+function getNameValue(name, number) {
+  return name ? name : `Player ${number}`;
 }
 
 function closeGameOptionsDialog() {
