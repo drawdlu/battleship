@@ -31,8 +31,8 @@ function addShipToCell(x, y, cell, board) {
   }
 }
 
-export function getBoardDiv(ownBoard) {
-  const divClass = ownBoard ? ".player.board" : ".opponent.board";
+export function getBoardDiv(isPlayerOne) {
+  const divClass = isPlayerOne ? ".player.board" : ".opponent.board";
 
   return document.querySelector(divClass);
 }

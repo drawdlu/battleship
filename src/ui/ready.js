@@ -8,14 +8,15 @@ import {
 import { game } from "../index";
 import { addAttackListener, getBoardDiv } from "./board";
 import { getSortedRandomShipCoords } from "./randmoize";
+import { hidePlayerShips } from "./two-player";
 
 export function listenToReady() {
   const readyBtn = document.querySelector("button.ready");
 
-  readyBtn.addEventListener("click", handleStart);
+  readyBtn.addEventListener("click", handleReady);
 }
 
-function handleStart() {
+function handleReady() {
   const ships = document.querySelectorAll(".ship");
   const shipCoords = [];
 
@@ -29,6 +30,13 @@ function handleStart() {
 
   setupShips(shipCoords);
   addAttackListener(getBoardDiv(false));
+  handleTwoPlayer();
+}
+
+function handleTwoPlayer() {
+  if (game.twoPlayerGame) {
+    hidePlayerShips(true);
+  }
 }
 
 function setupShips(coords) {

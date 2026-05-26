@@ -122,3 +122,7 @@ html.dragging:hover {
 .ship.index-change {
   z-index: -1;
 }
+
+.ship.hide {
+  display: none;
+}
