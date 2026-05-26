@@ -12,7 +12,7 @@ import { listenToReady } from "../ui/ready";
 import { renderOptions } from "../ui/overlay";
 
 export default function createGame() {
-  let player1, player2, currentPlayer, opponentPlayer;
+  let player1, player2, currentPlayer, opponentPlayer, twoPlayerGame;
 
   const renderBoards = (player, opponent) => {
     renderPlayerBoard(player, true);
@@ -94,15 +94,23 @@ export default function createGame() {
     opponentPlayer = player2;
   };
 
+  const setTwoPlayers = (boolenValue) => {
+    twoPlayerGame = boolenValue;
+  };
+
   renderOptions();
 
   return {
     get opponentPlayer() {
       return opponentPlayer;
     },
+    get twoPlayerGame() {
+      return twoPlayerGame;
+    },
     attackMissed,
     attackHits,
     setupPlayerShips,
     setupGame,
+    setTwoPlayers,
   };
 }

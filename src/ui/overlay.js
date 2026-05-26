@@ -92,19 +92,30 @@ function handleGameStart(e) {
   const data = new FormData(e.currentTarget);
 
   const names = getPlayerNames(data);
+  registerTwoPlayerGame(data);
 
   game.setupGame(names.playerOne, names.playerTwo);
+}
+
+function registerTwoPlayerGame(data) {
+  const hasTwoPlayers = gameHasHumanOpponent(data);
+
+  game.setTwoPlayers(hasTwoPlayers);
 }
 
 function getPlayerNames(data) {
   const playerOne = getNameValue(data.get("player-1-name"), 1);
   let playerTwo = null;
 
-  if (data.get("opponent") === "player") {
+  if (gameHasHumanOpponent(data)) {
     playerTwo = getNameValue(data.get("player-2-name"), 2);
   }
 
   return { playerOne: playerOne, playerTwo: playerTwo };
+}
+
+function gameHasHumanOpponent(data) {
+  return data.get("opponent") === "player";
 }
 
 function getNameValue(name, number) {
