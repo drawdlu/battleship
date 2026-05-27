@@ -13,6 +13,7 @@ import { renderOptions } from "../ui/overlay";
 
 export default function createGame() {
   let player1, player2, currentPlayer, opponentPlayer, twoPlayerGame;
+  let currentPlayerSettingUp = 1;
 
   const renderBoards = (player, opponent) => {
     renderPlayerBoard(player, true);
@@ -98,6 +99,10 @@ export default function createGame() {
     twoPlayerGame = boolenValue;
   };
 
+  const setCurrentPlayerSettingUp = (number) => {
+    currentPlayerSettingUp = number;
+  };
+
   renderOptions();
 
   return {
@@ -107,10 +112,14 @@ export default function createGame() {
     get twoPlayerGame() {
       return twoPlayerGame;
     },
+    get currentPlayerSettingUp() {
+      return currentPlayerSettingUp;
+    },
     attackMissed,
     attackHits,
     setupPlayerShips,
     setupGame,
     setTwoPlayers,
+    setCurrentPlayerSettingUp,
   };
 }

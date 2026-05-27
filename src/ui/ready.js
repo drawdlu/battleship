@@ -36,6 +36,7 @@ function handleReady() {
 function handleTwoPlayer() {
   if (game.twoPlayerGame) {
     hidePlayerShips(true);
+    game.setCurrentPlayerSettingUp(2);
   }
 }
 
