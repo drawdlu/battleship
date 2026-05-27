@@ -6,6 +6,7 @@ import {
 } from "../modules/helper";
 
 import { moveShipToCellPosition } from "./ships";
+import { isPlayerOneSetup, getShips, getBoardClass } from "./two-player";
 
 const shipCoords = new Set();
 
@@ -44,7 +45,7 @@ function isCoordsVertical(coords) {
 }
 
 function getSortedShipDivs() {
-  const ships = document.querySelectorAll(".ship");
+  const boardClass = getBoardClass();
   const shipArr = [];
   const shipClasses = [
     ".two",
@@ -55,7 +56,9 @@ function getSortedShipDivs() {
   ];
 
   for (let i = 0; i < shipClasses.length; ++i) {
-    shipArr.push(document.querySelector(`.ship${shipClasses[i]}`));
+    shipArr.push(
+      document.querySelector(`${boardClass} .ship${shipClasses[i]}`),
+    );
   }
 
   return shipArr;
@@ -119,7 +122,10 @@ function shipsHasCoords(shipCoords, newCoords) {
 }
 
 function moveShip(coords, ship) {
-  const cell = document.querySelector(`.cell.x-${coords[1]}.y-${coords[0]}`);
+  const boardClass = getBoardClass();
+  const cell = document.querySelector(
+    `${boardClass} .cell.x-${coords[1]}.y-${coords[0]}`,
+  );
 
   moveShipToCellPosition(ship, cell);
 }
@@ -188,7 +194,7 @@ function getVerticalClass(ship) {
 }
 
 function toggleShipRandom() {
-  const ships = document.querySelectorAll(".ship");
+  const ships = getShips(isPlayerOneSetup());
 
   ships.forEach((ship) => {
     ship.classList.toggle("randomize");

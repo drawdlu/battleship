@@ -4,6 +4,10 @@ import {
   divClassContains,
 } from "../modules/helper";
 
+import { getShips, isPlayerOneSetup } from "./two-player";
+import { game } from "../index";
+import { getBoardDiv } from "./board";
+
 let newX = 0,
   newY = 0,
   startX = 0,
@@ -15,7 +19,7 @@ let currentShip = null,
   closestElement = null;
 
 export function listenToShip() {
-  const ships = document.querySelectorAll(".ship");
+  const ships = getShips(isPlayerOneSetup());
 
   ships.forEach((ship) => {
     const rotate = ship.querySelector(".rotate");
@@ -92,13 +96,13 @@ function moveShip(e) {
 // Makes placing the ships more intuitive than snapping it to the closest
 // cell on the top left corner of the ship position on "mouseup"
 function updateClosestElement(newShipY, newShipX) {
-  const boardDiv = document.querySelector(".player.board");
+  const boardDiv = getBoardDiv(isPlayerOneSetup());
   const position = getShipPositionFromWindow(newShipY, newShipX);
   closestElement = document.elementFromPoint(position.x + 20, position.y + 20);
 }
 
 function getShipPositionFromWindow(newShipY, newShipX) {
-  const board = document.querySelector(".player.board");
+  const board = getBoardDiv(isPlayerOneSetup());
   const y = board.offsetTop + newShipY - window.scrollY;
   const x = board.offsetLeft + newShipX - window.scrollX;
 
@@ -159,7 +163,7 @@ function getDimensionsToAdd(ship, vertical) {
 }
 
 function isAPlayerCell(div) {
-  const playerBoard = document.querySelector(".player.board");
+  const playerBoard = getBoardDiv(isPlayerOneSetup());
 
   return playerBoard.contains(div) && div.classList.contains("cell");
 }

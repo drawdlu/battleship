@@ -8,7 +8,7 @@ import {
 import { game } from "../index";
 import { addAttackListener, getBoardDiv } from "./board";
 import { getSortedRandomShipCoords } from "./randmoize";
-import { hidePlayerShips } from "./two-player";
+import { hidePlayerShips, isPlayerOneSetup, getShips } from "./two-player";
 
 export function listenToReady() {
   const readyBtn = document.querySelector("button.ready");
@@ -17,7 +17,7 @@ export function listenToReady() {
 }
 
 function handleReady() {
-  const ships = document.querySelectorAll(".ship");
+  const ships = getShips(isPlayerOneSetup());
   const shipCoords = [];
 
   ships.forEach((ship) => {
@@ -27,9 +27,7 @@ function handleReady() {
   });
 
   removeStartRandomizeButtons();
-
   setupShips(shipCoords);
-  addAttackListener(getBoardDiv(false));
   handleTwoPlayer();
 }
 
@@ -37,6 +35,8 @@ function handleTwoPlayer() {
   if (game.twoPlayerGame) {
     hidePlayerShips(true);
     game.setCurrentPlayerSettingUp(2);
+  } else {
+    addAttackListener(getBoardDiv(false));
   }
 }
 
