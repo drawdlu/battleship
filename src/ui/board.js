@@ -4,11 +4,6 @@ import { game } from "../index";
 
 function createCell(x, y, ownBoard) {
   const cell = createDivWithClass("cell", `x-${x}`, `y-${y}`);
-
-  if (!ownBoard) {
-    addClickableDivToCell(cell);
-  }
-
   preventDragging(cell);
 
   return cell;

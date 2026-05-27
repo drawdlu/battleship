@@ -8,10 +8,18 @@ import {
 import { game } from "../index";
 import { addAttackListener, getBoardDiv } from "./board";
 import { getSortedRandomShipCoords } from "./randmoize";
-import { hidePlayerShips, isPlayerOneSetup, getShips } from "./two-player";
+import {
+  hidePlayerShips,
+  isPlayerOneSetup,
+  getShips,
+  handleSecondPlayerRenderShipSetup,
+  getButtonsContainerClass,
+  hideSetupButtons,
+} from "./two-player";
 
 export function listenToReady() {
-  const readyBtn = document.querySelector("button.ready");
+  const containerClass = getButtonsContainerClass(isPlayerOneSetup());
+  const readyBtn = document.querySelector(`${containerClass} button.ready`);
 
   readyBtn.addEventListener("click", handleReady);
 }
@@ -26,33 +34,33 @@ function handleReady() {
     shipCoords.push(getShipCoords(ship));
   });
 
-  removeStartRandomizeButtons();
-  setupShips(shipCoords);
-  handleTwoPlayer();
+  hideSetupButtons(game.currentPlayerSettingUp);
+  handleTwoPlayer(shipCoords);
 }
 
-function handleTwoPlayer() {
-  if (game.twoPlayerGame) {
-    hidePlayerShips(true);
+function handleTwoPlayer(coords) {
+  const currentPlayerSetup = game.currentPlayerSettingUp;
+  if (game.twoPlayerGame && currentPlayerSetup == 2) {
+    game.setupPlayerShips(coords, currentPlayerSetup);
+    hidePlayerShips(currentPlayerSetup);
+  } else if (game.twoPlayerGame) {
+    game.setupPlayerShips(coords, currentPlayerSetup);
+    hidePlayerShips(currentPlayerSetup);
     game.setCurrentPlayerSettingUp(2);
+    handleSecondPlayerRenderShipSetup();
   } else {
     addAttackListener(getBoardDiv(false));
+    setupShipsWithComputerOpponent(coords);
   }
 }
 
-function setupShips(coords) {
+function setupShipsWithComputerOpponent(coords) {
   game.setupPlayerShips(coords, 1);
   game.setupPlayerShips(getSortedRandomShipCoords(), 2);
 }
 
 function toggleShipZIndex(ship) {
   ship.classList.toggle("index-change");
-}
-
-function removeStartRandomizeButtons() {
-  const setupButtonsDiv = document.querySelector(".setup-buttons");
-
-  setupButtonsDiv.classList.add("inactive");
 }
 
 function getShipCoords(ship) {

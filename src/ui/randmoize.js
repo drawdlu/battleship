@@ -6,12 +6,20 @@ import {
 } from "../modules/helper";
 
 import { moveShipToCellPosition } from "./ships";
-import { isPlayerOneSetup, getShips, getBoardClass } from "./two-player";
+import {
+  isPlayerOneSetup,
+  getShips,
+  getBoardClass,
+  getButtonsContainerClass,
+} from "./two-player";
 
 const shipCoords = new Set();
 
 export function listenToRandomize() {
-  const randomBtn = document.querySelector("button.randomize");
+  const buttonContainer = getButtonsContainerClass(isPlayerOneSetup());
+  const randomBtn = document.querySelector(
+    `${buttonContainer} button.randomize`,
+  );
 
   randomBtn.addEventListener("click", randomizeShips);
 }
@@ -45,7 +53,7 @@ function isCoordsVertical(coords) {
 }
 
 function getSortedShipDivs() {
-  const boardClass = getBoardClass();
+  const boardClass = getBoardClass(isPlayerOneSetup());
   const shipArr = [];
   const shipClasses = [
     ".two",
@@ -122,7 +130,7 @@ function shipsHasCoords(shipCoords, newCoords) {
 }
 
 function moveShip(coords, ship) {
-  const boardClass = getBoardClass();
+  const boardClass = getBoardClass(isPlayerOneSetup());
   const cell = document.querySelector(
     `${boardClass} .cell.x-${coords[1]}.y-${coords[0]}`,
   );

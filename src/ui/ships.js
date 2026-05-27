@@ -178,7 +178,8 @@ function returnClosestPlayerCell(div) {
     return null;
   }
 
-  return div.closest(".player .cell");
+  const currentClass = isPlayerOneSetup() ? ".player" : ".opponent";
+  return div.closest(`${currentClass} .cell`);
 }
 
 function shipInDiv(div) {

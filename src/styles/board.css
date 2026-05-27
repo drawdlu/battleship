@@ -36,6 +36,6 @@
   background-color: rgba(255, 0, 0, .5);
 }
 
-.setup-buttons.inactive {
+.setup-buttons.hide {
   visibility: hidden;
 }

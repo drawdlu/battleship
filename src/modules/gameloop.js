@@ -109,6 +109,9 @@ export default function createGame() {
     get opponentPlayer() {
       return opponentPlayer;
     },
+    get currentPlayer() {
+      return currentPlayer;
+    },
     get twoPlayerGame() {
       return twoPlayerGame;
     },
