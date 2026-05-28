@@ -19,6 +19,7 @@ import {
   handleSecondPlayerRenderShipSetup,
   getButtonsContainerClass,
   hideSetupButtons,
+  switchActivePlayerOnBoard,
 } from "./two-player";
 
 export function listenToReady() {
@@ -47,6 +48,7 @@ function handleTwoPlayer(coords) {
   if (game.twoPlayerGame && currentPlayerSetup == 2) {
     game.setupPlayerShips(coords, currentPlayerSetup);
     hidePlayerShips(currentPlayerSetup);
+    setupGameStart();
   } else if (game.twoPlayerGame) {
     game.setupPlayerShips(coords, currentPlayerSetup);
     hidePlayerShips(currentPlayerSetup);
@@ -58,6 +60,22 @@ function handleTwoPlayer(coords) {
     addAttackListener(getBoardDiv(isPlayerOne));
     setupShipsWithComputerOpponent(coords);
   }
+}
+
+function setupGameStart() {
+  addClickableDivsToBothBoards();
+  addAttackListenerToOpponentBoard();
+}
+
+function addAttackListenerToOpponentBoard() {
+  const isPlayerOne = false;
+  const boardDiv = getBoardDiv(isPlayerOne);
+  addAttackListener(boardDiv);
+}
+
+function addClickableDivsToBothBoards() {
+  addClickableDivToBoard(true);
+  addClickableDivToBoard(false);
 }
 
 function setupShipsWithComputerOpponent(coords) {

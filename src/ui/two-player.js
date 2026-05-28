@@ -1,8 +1,9 @@
-import { getBoardDiv } from "./board";
+import { addAttackListener, getBoardDiv, removeAttackListener } from "./board";
 import { game } from "../index";
 import { randomizeShips, listenToRandomize } from "./randmoize";
 import { listenToShip } from "./ships";
 import { listenToReady } from "./ready";
+import { attackInitiated } from "./attack";
 
 export function hidePlayerShips(playerNumber) {
   const isPlayerOne = playerNumber == 1;
@@ -74,4 +75,22 @@ export function handleSecondPlayerRenderShipSetup() {
   listenToShip();
   listenToRandomize();
   listenToReady();
+}
+
+export function switchActivePlayerOnBoard() {
+  const isPlayerOne = true;
+  const playerOneBoard = getBoardDiv(isPlayerOne);
+  const playerTwoBoard = getBoardDiv(!isPlayerOne);
+
+  if (isBoardActiveEventClick(playerOneBoard)) {
+    removeAttackListener(playerOneBoard);
+    addAttackListener(playerTwoBoard);
+  } else {
+    removeAttackListener(playerTwoBoard);
+    addAttackListener(playerOneBoard);
+  }
+}
+
+function isBoardActiveEventClick(board) {
+  return board.dataset.clickable === "true";
 }

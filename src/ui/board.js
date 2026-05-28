@@ -51,6 +51,12 @@ function getPlayerName(player) {
 
 export function addAttackListener(board) {
   board.addEventListener("click", attackInitiated);
+  board.dataset.clickable = "true";
+}
+
+export function removeAttackListener(board) {
+  board.removeEventListener("click", attackInitiated);
+  board.dataset.clickable = "false";
 }
 
 function getCell(target) {

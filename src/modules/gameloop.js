@@ -10,6 +10,7 @@ import { listenToShip } from "../ui/ships";
 import { listenToRandomize, randomizeShips } from "../ui/randmoize";
 import { listenToReady } from "../ui/ready";
 import { renderOptions } from "../ui/overlay";
+import { switchActivePlayerOnBoard } from "../ui/two-player";
 
 export default function createGame() {
   let player1, player2, currentPlayer, opponentPlayer, twoPlayerGame;
@@ -41,6 +42,7 @@ export default function createGame() {
 
   const attackMissed = () => {
     changePlayers();
+    switchActivePlayerOnBoard();
 
     if (computerTurn()) {
       computerAttack();
