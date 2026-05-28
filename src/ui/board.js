@@ -1,6 +1,7 @@
 import { createDivWithClass } from "../modules/helper";
 import { attackInitiated } from "./attack";
 import { game } from "../index";
+import { getBoardClass } from "./two-player";
 
 function createCell(x, y, ownBoard) {
   const cell = createDivWithClass("cell", `x-${x}`, `y-${y}`);
@@ -90,4 +91,13 @@ export function renderAttack(target, shipPresent) {
   const cell = getCell(target);
   cell.append(createXDiv());
   addShipHitClass(cell, shipPresent);
+}
+
+export function addClickableDivToBoard(isPlayerOne) {
+  const boardDivClass = getBoardClass(isPlayerOne);
+  const cells = document.querySelectorAll(`${boardDivClass} .cell`);
+
+  cells.forEach((cell) => {
+    addClickableDivToCell(cell);
+  });
 }

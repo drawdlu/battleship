@@ -6,7 +6,11 @@ import {
   divClassContains,
 } from "../modules/helper";
 import { game } from "../index";
-import { addAttackListener, getBoardDiv } from "./board";
+import {
+  addAttackListener,
+  addClickableDivToBoard,
+  getBoardDiv,
+} from "./board";
 import { getSortedRandomShipCoords } from "./randmoize";
 import {
   hidePlayerShips,
@@ -49,7 +53,9 @@ function handleTwoPlayer(coords) {
     game.setCurrentPlayerSettingUp(2);
     handleSecondPlayerRenderShipSetup();
   } else {
-    addAttackListener(getBoardDiv(false));
+    const isPlayerOne = false;
+    addClickableDivToBoard(isPlayerOne);
+    addAttackListener(getBoardDiv(isPlayerOne));
     setupShipsWithComputerOpponent(coords);
   }
 }
