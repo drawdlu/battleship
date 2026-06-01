@@ -36,5 +36,3 @@ export function transmitAttack(coords, target) {
     console.log(err + coords);
   }
 }
-
-function successfulAttack() {}

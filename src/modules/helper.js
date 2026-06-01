@@ -68,3 +68,11 @@ export function getAddDirection(isVertical) {
 
   return { x: addX, y: addY };
 }
+
+export function notWithinRange(coords) {
+  return !withinZeroToTen(coords[0]) || !withinZeroToTen(coords[1]);
+}
+
+function withinZeroToTen(num) {
+  return num < 10 && num >= 0;
+}

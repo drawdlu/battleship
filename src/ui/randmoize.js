@@ -3,6 +3,7 @@ import {
   getShipSize,
   divClassContains,
   getAddDirection,
+  notWithinRange,
 } from "../modules/helper";
 
 import { moveShipToCellPosition } from "./ships";
@@ -165,14 +166,6 @@ function shipWillFit(coords, isVertical, shipSize) {
     coordsCopy.y += add.y;
   }
   return true;
-}
-
-function notWithinRange(coords) {
-  return !withinZeroToTen(coords[0]) || !withinZeroToTen(coords[1]);
-}
-
-function withinZeroToTen(num) {
-  return num < 10 && num >= 0;
 }
 
 function addOrRemoveRandomVertical(ship, isVertical) {

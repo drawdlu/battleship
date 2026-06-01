@@ -54,6 +54,7 @@ export default function createGame() {
       announceWinner(currentPlayer);
       // stop game
     } else if (computerTurn()) {
+      sendComputerAttackHit();
       computerAttack();
     }
   };
@@ -78,6 +79,10 @@ export default function createGame() {
       `.player .cell.x-${coords[1]}.y-${coords[0]}`,
     );
     transmitAttack(coords, target);
+  };
+
+  const sendComputerAttackHit = () => {
+    currentPlayer.attackHit();
   };
 
   const setupGame = (nameA, nameB) => {
