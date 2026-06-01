@@ -14,5 +14,8 @@ export default function createShip(size) {
     length: length,
     isSunk,
     hit,
+    get hits() {
+      return hits;
+    },
   };
 }

@@ -28,7 +28,8 @@ export function transmitAttack(coords, target) {
     renderAttack(target, shipPresent);
 
     if (shipPresent) {
-      game.attackHits();
+      const shipInfo = opponent.board.getShipInfo(coords);
+      game.attackHits(shipInfo);
     } else {
       game.attackMissed();
     }

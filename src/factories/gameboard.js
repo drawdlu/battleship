@@ -19,7 +19,9 @@ export default function createGameBoard() {
   };
 
   const addShipToList = (ship) => {
-    ships.push(ship);
+    if (ships.indexOf(ship) === -1) {
+      ships.push(ship);
+    }
   };
 
   const receiveAttack = (coords) => {
@@ -41,6 +43,15 @@ export default function createGameBoard() {
     return cells.map((x) => x.map((cell) => ({ ...cell })));
   };
 
+  const getShipInfo = (coords) => {
+    const ship = cells[coords[0]][coords[1]].ship;
+    const length = ship.length;
+    const hits = ship.hits;
+    const sunk = ship.isSunk();
+
+    return { length: length, hits: hits, sunk: sunk };
+  };
+
   return {
     placeShip,
     receiveAttack,
@@ -48,5 +59,6 @@ export default function createGameBoard() {
     get cells() {
       return copyBoard();
     },
+    getShipInfo,
   };
 }

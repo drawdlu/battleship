@@ -11,6 +11,7 @@ import { listenToRandomize, randomizeShips } from "../ui/randmoize";
 import { listenToReady } from "../ui/ready";
 import { renderOptions } from "../ui/overlay";
 import { switchActivePlayerOnBoard } from "../ui/two-player";
+import { displayAttackInfo } from "../ui/ship-hits";
 
 export default function createGame() {
   let player1, player2, currentPlayer, opponentPlayer, twoPlayerGame;
@@ -49,7 +50,7 @@ export default function createGame() {
     }
   };
 
-  const attackHits = () => {
+  const attackHits = (shipInfo) => {
     if (playerWon()) {
       announceWinner(currentPlayer);
       // stop game
@@ -57,6 +58,9 @@ export default function createGame() {
       sendComputerAttackHit();
       computerAttack();
     }
+
+    const isPlayerOne = player1 == currentPlayer;
+    displayAttackInfo(shipInfo, isPlayerOne);
   };
 
   const playerWon = () => {

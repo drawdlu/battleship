@@ -25,3 +25,7 @@
 .ship-hit-display .ship-display div:last-child {
   border-right: 2px solid black;
 }
+
+.ship-hit-display .ship-display .hit {
+  background-color: red;
+}
