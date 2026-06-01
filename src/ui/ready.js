@@ -59,12 +59,22 @@ function handleTwoPlayer(coords) {
     addClickableDivToBoard(isPlayerOne);
     addAttackListener(getBoardDiv(isPlayerOne));
     setupShipsWithComputerOpponent(coords);
+    toggleShipDisplays();
   }
+}
+
+function toggleShipDisplays() {
+  const shipDisplays = document.querySelectorAll(".ship-hit-display");
+
+  shipDisplays.forEach((shipDisplayDiv) => {
+    shipDisplayDiv.classList.toggle("hide");
+  });
 }
 
 function setupGameStart() {
   addClickableDivsToBothBoards();
   addAttackListenerToOpponentBoard();
+  toggleShipDisplays();
 }
 
 function addAttackListenerToOpponentBoard() {

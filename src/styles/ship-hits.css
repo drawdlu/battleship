@@ -1,0 +1,27 @@
+.ship-hit-display {
+  display: flex;
+  gap: 1rem;
+}
+
+.ship-hit-display.hide {
+  visibility: hidden;
+}
+
+.ship-hit-display .ship-display {
+  display: flex;
+}
+
+.ship-hit-display .ship-display div {
+  height: 20px;
+  width: 20px;
+  border-block: 2px solid black;
+  border-inline: 1px solid black;
+}
+
+.ship-hit-display .ship-display div:first-child {
+  border-left: 2px solid black;
+}
+
+.ship-hit-display .ship-display div:last-child {
+  border-right: 2px solid black;
+}
