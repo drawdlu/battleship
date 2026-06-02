@@ -68,13 +68,35 @@ export function getButtonsContainerClass(isPlayerOne) {
 }
 
 export function handleSecondPlayerRenderShipSetup() {
+  const dialog = document.querySelector("dialog#player-two-setup");
+  const button = dialog.querySelector("button.setup");
+  insertNameInDialog(dialog);
+
+  dialog.showModal();
+  button.addEventListener("click", setupScreenForSecondPlayer);
+}
+
+function insertNameInDialog(dialog) {
+  const span = dialog.querySelector("span.name");
+  const name = game.opponentPlayer.name;
+
+  span.textContent = name;
+}
+
+function setupScreenForSecondPlayer() {
   const playerNumber = game.currentPlayerSettingUp;
+  closePlayerTwoSetupDialog();
   showShips(playerNumber);
   showSetupButtons(playerNumber);
   randomizeShips();
   listenToShip();
   listenToRandomize();
   listenToReady();
+}
+
+function closePlayerTwoSetupDialog() {
+  const dialog = document.querySelector("dialog#player-two-setup");
+  dialog.close();
 }
 
 export function switchActivePlayerOnBoard() {
