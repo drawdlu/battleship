@@ -48,8 +48,13 @@ export default function createGameBoard() {
     const length = ship.length;
     const hits = ship.hits;
     const sunk = ship.isSunk();
+    const first = isFirstThreeShip(ship);
 
-    return { length: length, hits: hits, sunk: sunk };
+    return { length: length, hits: hits, sunk: sunk, first: first };
+  };
+
+  const isFirstThreeShip = (ship) => {
+    return ship === ships[1];
   };
 
   return {

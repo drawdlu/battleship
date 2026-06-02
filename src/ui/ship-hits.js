@@ -39,9 +39,9 @@ function getShipLengthThreeDiv(container, shipInfo) {
   const divs = container.querySelectorAll(".ship-display.three");
   const divOne = divs[0];
   const divTwo = divs[1];
-  const shipRemaining = shipInfo.length - shipInfo.hits + 1;
+  const firstShip = shipInfo.first;
 
-  if (divOne.querySelectorAll(".safe").length == shipRemaining) {
+  if (firstShip) {
     return divOne.querySelector(".safe");
   } else {
     return divTwo.querySelector(".safe");
