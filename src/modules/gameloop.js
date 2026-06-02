@@ -51,6 +51,7 @@ export default function createGame() {
   };
 
   const attackHits = (shipInfo) => {
+    const isPlayerOne = player1 == opponentPlayer;
     if (playerWon()) {
       announceWinner(currentPlayer);
       // stop game
@@ -59,7 +60,6 @@ export default function createGame() {
       computerAttack();
     }
 
-    const isPlayerOne = player1 == currentPlayer;
     displayAttackInfo(shipInfo, isPlayerOne);
   };
 

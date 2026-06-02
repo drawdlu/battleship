@@ -41,8 +41,6 @@ function getShipLengthThreeDiv(container, shipInfo) {
   const divTwo = divs[1];
   const shipRemaining = shipInfo.length - shipInfo.hits + 1;
 
-  console.log(`length: ${divOne.querySelectorAll(".safe").length}`);
-  console.log(`remainingLength: ${shipRemaining}`);
   if (divOne.querySelectorAll(".safe").length == shipRemaining) {
     return divOne.querySelector(".safe");
   } else {
