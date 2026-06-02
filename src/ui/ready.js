@@ -22,6 +22,7 @@ import {
   hideSetupButtons,
   switchActivePlayerOnBoard,
   showCurrentPlayerName,
+  activateShowButtonForCurrentPlayer,
 } from "./two-player";
 
 export function listenToReady() {
@@ -79,6 +80,7 @@ function setupGameStart() {
   toggleShipDisplays();
   adjustOpacityOfCurrentPlayerBoard();
   showCurrentPlayerName();
+  activateShowButtonForCurrentPlayer();
 }
 
 function addAttackListenerToOpponentBoard() {

@@ -44,3 +44,13 @@
   background-color: gray;
   opacity: .5;
 }
+
+.boards .name-button {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.boards .name-button .showButton.hide {
+  visibility: hidden;
+}

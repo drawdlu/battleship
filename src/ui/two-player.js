@@ -110,6 +110,7 @@ export function switchActivePlayerOnBoard() {
   const playerTwoBoard = getBoardDiv(!isPlayerOne);
   showCurrentPlayerName();
   adjustOpacityOfCurrentPlayerBoard();
+  activateShowButtonForCurrentPlayer();
 
   if (isBoardActiveEventClick(playerOneBoard)) {
     removeAttackListener(playerOneBoard);
@@ -132,4 +133,31 @@ export function showCurrentPlayerName() {
 
     span.textContent = name;
   }
+}
+
+export function activateShowButtonForCurrentPlayer() {
+  const isPlayerOne = game.isPlayerOneCurrentPlayer();
+  const showButtonDivCurrent = getShowButton(isPlayerOne);
+  const showButtonDivOpponent = getShowButton(!isPlayerOne);
+
+  revealAndHideButtons(showButtonDivCurrent, showButtonDivOpponent);
+}
+
+function revealAndHideButtons(currentDiv, opponentDiv) {
+  revealShowButton(currentDiv);
+  hideShowButton(opponentDiv);
+}
+
+function getShowButton(isPlayerOne) {
+  const container = getBoardDiv(isPlayerOne).parentElement;
+
+  return container.querySelector(".showButton");
+}
+
+function revealShowButton(div) {
+  div.classList.remove("hide");
+}
+
+function hideShowButton(div) {
+  div.classList.add("hide");
 }
