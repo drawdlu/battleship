@@ -118,6 +118,11 @@ export default function createGame() {
     return currentPlayer == player1;
   };
 
+  const isHumanOpponent = () => {
+    console.log(player2.name);
+    return player2.name !== undefined;
+  };
+
   renderOptions();
 
   return {
@@ -140,5 +145,6 @@ export default function createGame() {
     setTwoPlayers,
     setCurrentPlayerSettingUp,
     isPlayerOneCurrentPlayer,
+    isHumanOpponent,
   };
 }

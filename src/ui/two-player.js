@@ -125,9 +125,11 @@ function isBoardActiveEventClick(board) {
 }
 
 export function showCurrentPlayerName() {
-  const name = game.currentPlayer.name;
-  const span = document.querySelector(".playerTurn span.name");
-  span.parentElement.parentElement.classList.remove("hide");
+  if (game.humanOpponent) {
+    const name = game.currentPlayer.name;
+    const span = document.querySelector(".playerTurn span.name");
+    span.parentElement.parentElement.classList.remove("hide");
 
-  span.textContent = name;
+    span.textContent = name;
+  }
 }
