@@ -1,8 +1,10 @@
 import {
   addAttackListener,
+  addDarkenClass,
   adjustOpacityOfCurrentPlayerBoard,
   getBoardDiv,
   removeAttackListener,
+  removeDarkenClass,
 } from "./board";
 import { game } from "../index";
 import { randomizeShips, listenToRandomize } from "./randmoize";
@@ -163,21 +165,29 @@ function removeListener(button) {
 }
 
 function showCurrentPlayerShips(e) {
-  const playerNumber = getPlayerNumberFromShowButtonEventTarget(e);
+  const container = getContainerFromShowButtonEvent(e);
+  const playerNumber = getPlayerNumberFromContainer(container);
+  const board = container.querySelector(".board");
+  removeDarkenClass(board);
 
   showShips(playerNumber);
 }
 
 function hideCurrentPlayerShips(e) {
-  const playerNumber = getPlayerNumberFromShowButtonEventTarget(e);
+  const container = getContainerFromShowButtonEvent(e);
+  const playerNumber = getPlayerNumberFromContainer(container);
+  const board = container.querySelector(".board");
+  addDarkenClass(board);
 
   hidePlayerShips(playerNumber);
 }
 
-function getPlayerNumberFromShowButtonEventTarget(e) {
-  const divContainer = e.target.closest(".board-container");
+function getContainerFromShowButtonEvent(e) {
+  return e.target.closest(".board-container");
+}
 
-  return divContainer.classList.contains("player-container") ? 1 : 2;
+function getPlayerNumberFromContainer(div) {
+  return div.classList.contains("player-container") ? 1 : 2;
 }
 
 function revealAndHideButtons(currentDiv, opponentDiv) {
