@@ -98,6 +98,7 @@ function setupScreenForSecondPlayer() {
   listenToRandomize();
   listenToReady();
   adjustOpacityOfCurrentPlayerBoard();
+  showCurrentPlayerName();
 }
 
 function closePlayerTwoSetupDialog() {
@@ -109,6 +110,7 @@ export function switchActivePlayerOnBoard() {
   const isPlayerOne = true;
   const playerOneBoard = getBoardDiv(isPlayerOne);
   const playerTwoBoard = getBoardDiv(!isPlayerOne);
+  showCurrentPlayerName();
   adjustOpacityOfCurrentPlayerBoard();
 
   if (isBoardActiveEventClick(playerOneBoard)) {
@@ -122,4 +124,11 @@ export function switchActivePlayerOnBoard() {
 
 function isBoardActiveEventClick(board) {
   return board.dataset.clickable === "true";
+}
+
+function showCurrentPlayerName() {
+  const name = game.currentPlayer.name;
+  const span = document.querySelector(".playerTurn span.name");
+
+  span.textContent = name;
 }
