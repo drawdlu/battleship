@@ -100,7 +100,7 @@ export default function createComputerPlayer() {
     let coords = addToCoords(attackDirection, currentCoords);
 
     while (!notWithinRange(coords)) {
-      if (getCoordIndex(coords, attacksArr)) {
+      if (getCoordIndex(coords, attacksArr) !== null) {
         return coords;
       }
 
