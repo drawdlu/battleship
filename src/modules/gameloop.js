@@ -114,6 +114,10 @@ export default function createGame() {
     currentPlayerSettingUp = number;
   };
 
+  const isPlayerOneCurrentPlayer = () => {
+    return currentPlayer == player1;
+  };
+
   renderOptions();
 
   return {
@@ -135,5 +139,6 @@ export default function createGame() {
     setupGame,
     setTwoPlayers,
     setCurrentPlayerSettingUp,
+    isPlayerOneCurrentPlayer,
   };
 }

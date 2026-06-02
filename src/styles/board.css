@@ -39,3 +39,8 @@
 .setup-buttons.hide {
   visibility: hidden;
 }
+
+.board.darken {
+  background-color: gray;
+  opacity: .5;
+}

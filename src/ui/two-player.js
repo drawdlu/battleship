@@ -1,4 +1,9 @@
-import { addAttackListener, getBoardDiv, removeAttackListener } from "./board";
+import {
+  addAttackListener,
+  adjustOpacityOfCurrentPlayerBoard,
+  getBoardDiv,
+  removeAttackListener,
+} from "./board";
 import { game } from "../index";
 import { randomizeShips, listenToRandomize } from "./randmoize";
 import { listenToShip } from "./ships";
@@ -92,6 +97,7 @@ function setupScreenForSecondPlayer() {
   listenToShip();
   listenToRandomize();
   listenToReady();
+  adjustOpacityOfCurrentPlayerBoard();
 }
 
 function closePlayerTwoSetupDialog() {
@@ -103,6 +109,7 @@ export function switchActivePlayerOnBoard() {
   const isPlayerOne = true;
   const playerOneBoard = getBoardDiv(isPlayerOne);
   const playerTwoBoard = getBoardDiv(!isPlayerOne);
+  adjustOpacityOfCurrentPlayerBoard();
 
   if (isBoardActiveEventClick(playerOneBoard)) {
     removeAttackListener(playerOneBoard);

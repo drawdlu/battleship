@@ -107,3 +107,12 @@ export function addClickableDivToBoard(isPlayerOne) {
     addClickableDivToCell(cell);
   });
 }
+
+export function adjustOpacityOfCurrentPlayerBoard() {
+  const isPlayerOne = game.isPlayerOneCurrentPlayer();
+  const boardDivPlayer = getBoardDiv(isPlayerOne);
+  const boardDivOpponent = getBoardDiv(!isPlayerOne);
+
+  boardDivPlayer.classList.add("darken");
+  boardDivOpponent.classList.remove("darken");
+}
