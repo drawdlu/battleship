@@ -119,7 +119,6 @@ export default function createGame() {
   };
 
   const isHumanOpponent = () => {
-    console.log(player2.name);
     return player2.name !== undefined;
   };
 

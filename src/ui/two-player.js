@@ -141,6 +141,43 @@ export function activateShowButtonForCurrentPlayer() {
   const showButtonDivOpponent = getShowButton(!isPlayerOne);
 
   revealAndHideButtons(showButtonDivCurrent, showButtonDivOpponent);
+  activateAndRemoveButtonListeners(showButtonDivCurrent, showButtonDivOpponent);
+}
+
+function activateAndRemoveButtonListeners(currentDiv, opponentDiv) {
+  const currentButton = currentDiv.querySelector("button");
+  const opponentButton = opponentDiv.querySelector("button");
+
+  activateListener(currentButton);
+  removeListener(opponentButton);
+}
+
+function activateListener(button) {
+  button.addEventListener("mousedown", showCurrentPlayerShips);
+  button.addEventListener("mouseup", hideCurrentPlayerShips);
+}
+
+function removeListener(button) {
+  button.removeEventListener("mousedown", showCurrentPlayerShips);
+  button.removeEventListener("mouseup", hideCurrentPlayerShips);
+}
+
+function showCurrentPlayerShips(e) {
+  const playerNumber = getPlayerNumberFromShowButtonEventTarget(e);
+
+  showShips(playerNumber);
+}
+
+function hideCurrentPlayerShips(e) {
+  const playerNumber = getPlayerNumberFromShowButtonEventTarget(e);
+
+  hidePlayerShips(playerNumber);
+}
+
+function getPlayerNumberFromShowButtonEventTarget(e) {
+  const divContainer = e.target.closest(".board-container");
+
+  return divContainer.classList.contains("player-container") ? 1 : 2;
 }
 
 function revealAndHideButtons(currentDiv, opponentDiv) {
