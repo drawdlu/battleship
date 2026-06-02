@@ -97,8 +97,6 @@ function setupScreenForSecondPlayer() {
   listenToShip();
   listenToRandomize();
   listenToReady();
-  adjustOpacityOfCurrentPlayerBoard();
-  showCurrentPlayerName();
 }
 
 function closePlayerTwoSetupDialog() {
@@ -126,9 +124,10 @@ function isBoardActiveEventClick(board) {
   return board.dataset.clickable === "true";
 }
 
-function showCurrentPlayerName() {
+export function showCurrentPlayerName() {
   const name = game.currentPlayer.name;
   const span = document.querySelector(".playerTurn span.name");
+  span.parentElement.parentElement.classList.remove("hide");
 
   span.textContent = name;
 }

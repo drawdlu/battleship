@@ -10,6 +10,7 @@ import {
   addAttackListener,
   addClickableDivToBoard,
   getBoardDiv,
+  adjustOpacityOfCurrentPlayerBoard,
 } from "./board";
 import { getSortedRandomShipCoords } from "./randmoize";
 import {
@@ -20,6 +21,7 @@ import {
   getButtonsContainerClass,
   hideSetupButtons,
   switchActivePlayerOnBoard,
+  showCurrentPlayerName,
 } from "./two-player";
 
 export function listenToReady() {
@@ -75,6 +77,8 @@ function setupGameStart() {
   addClickableDivsToBothBoards();
   addAttackListenerToOpponentBoard();
   toggleShipDisplays();
+  adjustOpacityOfCurrentPlayerBoard();
+  showCurrentPlayerName();
 }
 
 function addAttackListenerToOpponentBoard() {
