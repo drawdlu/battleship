@@ -1,6 +1,11 @@
+import { game } from "../index";
 import { getBoardDiv } from "./board";
 
 export function displayAttackInfo(shipInfo, isPlayerOne) {
+  if (game.dontShowHits) {
+    return;
+  }
+
   const containerDiv = getBoardDiv(isPlayerOne).parentElement;
   const length = convertShipLenghtToWord(shipInfo.length);
   let shipHitDiv;

@@ -16,6 +16,7 @@ import { displayAttackInfo } from "../ui/ship-hits";
 export default function createGame() {
   let player1, player2, currentPlayer, opponentPlayer, twoPlayerGame;
   let currentPlayerSettingUp = 1;
+  let dontShowHits;
 
   const renderBoards = (player, opponent) => {
     renderPlayerBoard(player, true);
@@ -122,6 +123,10 @@ export default function createGame() {
     return player2.name !== undefined;
   };
 
+  const changeDontShowHits = (value) => {
+    dontShowHits = value;
+  };
+
   renderOptions();
 
   return {
@@ -137,6 +142,9 @@ export default function createGame() {
     get currentPlayerSettingUp() {
       return currentPlayerSettingUp;
     },
+    get dontShowHits() {
+      return dontShowHits;
+    },
     attackMissed,
     attackHits,
     setupPlayerShips,
@@ -145,5 +153,6 @@ export default function createGame() {
     setCurrentPlayerSettingUp,
     isPlayerOneCurrentPlayer,
     isHumanOpponent,
+    changeDontShowHits,
   };
 }

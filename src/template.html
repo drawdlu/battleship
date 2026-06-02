@@ -125,6 +125,7 @@
               <input type="radio" id="player" name="opponent" value="player">
             </fieldset>
             <fieldset class="names">
+              <legend>Player Names: </legend>
               <div class="field">
                 <label for="player-1-name">Name: </label>
                 <input type="text" placeholder="Player 1" id="player-1-name" name="player-1-name">
@@ -132,6 +133,13 @@
               <div class="field hide">
                 <label for="player-2-name">Name: </label>
                 <input type="text" placeholder="Player 2" id="player-2-name" name="player-2-name">
+              </div>
+            </fieldset>
+            <fieldset class="attack-info">
+              <legend>Options: </legend>
+              <div class="field">
+                <label title="Displays all ships and the number of hits it has taken at the bottom of the board" for="show-hits">Fleet Damage Indicators: </label>
+                <input type="checkbox" name="show-hits" id="show-hits">
               </div>
             </fieldset>
             <button>Continue</button>

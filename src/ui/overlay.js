@@ -93,8 +93,17 @@ function handleGameStart(e) {
 
   const names = getPlayerNames(data);
   registerTwoPlayerGame(data);
+  recordShowHitsOptionToGame(data.get("show-hits"));
 
   game.setupGame(names.playerOne, names.playerTwo);
+}
+
+function recordShowHitsOptionToGame(showHits) {
+  if (showHits) {
+    game.changeDontShowHits(false);
+  } else {
+    game.changeDontShowHits(true);
+  }
 }
 
 function registerTwoPlayerGame(data) {

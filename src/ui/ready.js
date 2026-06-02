@@ -67,6 +67,10 @@ function handleTwoPlayer(coords) {
 }
 
 function toggleShipDisplays() {
+  console.log(game.dontShowHits);
+  if (game.dontShowHits) {
+    return;
+  }
   const shipDisplays = document.querySelectorAll(".ship-hit-display");
 
   shipDisplays.forEach((shipDisplayDiv) => {
