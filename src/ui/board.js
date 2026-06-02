@@ -114,7 +114,15 @@ export function adjustOpacityOfCurrentPlayerBoard() {
     const boardDivPlayer = getBoardDiv(isPlayerOne);
     const boardDivOpponent = getBoardDiv(!isPlayerOne);
 
-    boardDivPlayer.classList.add("darken");
-    boardDivOpponent.classList.remove("darken");
+    addDarkenClass(boardDivPlayer);
+    removeDarkenClass(boardDivOpponent);
   }
+}
+
+export function removeDarkenClass(div) {
+  div.classList.remove("darken");
+}
+
+export function addDarkenClass(div) {
+  div.classList.add("darken");
 }
