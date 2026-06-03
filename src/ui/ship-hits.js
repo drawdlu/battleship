@@ -52,3 +52,11 @@ function getShipLengthThreeDiv(container, shipInfo) {
     return divTwo.querySelector(".safe");
   }
 }
+
+export function hideShipHitsDisplay() {
+  const displayDivs = document.querySelectorAll(".ship-hit-display");
+
+  displayDivs.forEach((div) => {
+    div.classList.add("hide");
+  });
+}

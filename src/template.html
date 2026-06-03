@@ -147,7 +147,14 @@
         </div>
       </dialog>
       <dialog id="win">
-        <p><span class="name"></span> has won the game!!</p>
+        <div class="conainer">
+          <div class="announce-winner">
+            <p><span class="name"></span> has won the game!!</p>
+          </div>
+          <div class="button-container">
+            <button class="play-again" data-confirm="no">Play Again</button>
+          </div>
+        </div>
       </dialog>
       <dialog id="player-two-setup">
         <div class="container">
@@ -157,6 +164,10 @@
           </div>
         </div>
       </dialog>
+      </div>
+      <div class="button-container">
+        <button class="restart" data-confirm="yes">Restart</button>
+      </div>
     </main>
     <footer>
       <p>Rotate icon from <a href="https://www.svgrepo.com/collection/dazzle-line-icons/">SVG REPO</a></p>

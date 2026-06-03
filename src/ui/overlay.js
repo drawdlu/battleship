@@ -1,4 +1,9 @@
-import { game } from "..";
+import { game } from "../index";
+import {
+  handleNewGame,
+  addNewGameListener,
+  listenToRestart,
+} from "./play-again";
 
 export function announceWinner(player) {
   const name = player.name;
@@ -7,6 +12,14 @@ export function announceWinner(player) {
   } else {
     openWinDialog("Computer");
   }
+
+  listenToPlayAgain();
+}
+
+function listenToPlayAgain() {
+  const button = document.querySelector("button.play-again");
+
+  addNewGameListener(button);
 }
 
 function openWinDialog(name) {
@@ -87,6 +100,7 @@ function listenToContinue() {
 
 function handleGameStart(e) {
   e.preventDefault();
+  listenToRestart();
   closeGameOptionsDialog();
 
   const data = new FormData(e.currentTarget);

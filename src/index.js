@@ -1,4 +1,8 @@
 import "./styles.css";
 import createGame from "./modules/gameloop";
 
-export const game = createGame();
+export let game = createGame();
+
+export function createNewGame() {
+  game = createGame();
+}

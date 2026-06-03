@@ -40,7 +40,7 @@ export function getBoardClass(isPlayerOne) {
   }
 }
 
-function showShips(playerNumber) {
+export function showShips(playerNumber) {
   const isPlayerOne = playerNumber == 1;
   const boardClass = getBoardClass(isPlayerOne);
   const ships = document.querySelectorAll(`${boardClass} .ship`);
@@ -50,7 +50,7 @@ function showShips(playerNumber) {
   });
 }
 
-function showSetupButtons(playerNumber) {
+export function showSetupButtons(playerNumber) {
   const isPlayerOne = playerNumber == 1;
   const containerClass = getButtonsContainerClass(isPlayerOne);
   const buttonsContainer = document.querySelector(containerClass);
@@ -138,6 +138,9 @@ export function showCurrentPlayerName() {
 }
 
 export function activateShowButtonForCurrentPlayer() {
+  if (!game.isHumanOpponent()) {
+    return;
+  }
   const isPlayerOne = game.isPlayerOneCurrentPlayer();
   const showButtonDivCurrent = getShowButton(isPlayerOne);
   const showButtonDivOpponent = getShowButton(!isPlayerOne);
@@ -205,6 +208,6 @@ function revealShowButton(div) {
   div.classList.remove("hide");
 }
 
-function hideShowButton(div) {
+export function hideShowButton(div) {
   div.classList.add("hide");
 }
