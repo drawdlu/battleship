@@ -127,6 +127,14 @@ export default function createGame() {
     dontShowHits = value;
   };
 
+  const getPlayerName = (playerNumber) => {
+    if (playerNumber == 1) {
+      return player1.name;
+    } else {
+      player2.name;
+    }
+  };
+
   renderOptions();
 
   return {
@@ -154,5 +162,6 @@ export default function createGame() {
     isPlayerOneCurrentPlayer,
     isHumanOpponent,
     changeDontShowHits,
+    getPlayerName,
   };
 }
