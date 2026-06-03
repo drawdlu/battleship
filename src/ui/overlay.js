@@ -47,9 +47,9 @@ function updateInputs() {
   );
 
   if (playerRadioInput.checked) {
-    toggleOpponentInputs("player");
+    toggleInputsAndOptions("player");
   } else {
-    toggleOpponentInputs("computer");
+    toggleInputsAndOptions("computer");
   }
 }
 
@@ -58,21 +58,37 @@ function listenToGameTypeChange() {
     "dialog#start-options fieldset.game-type",
   );
 
-  gameTypeField.addEventListener("change", toggleOpponentNameInputsOnChange);
+  gameTypeField.addEventListener("change", toggleOptionsAndName);
 }
 
-function toggleOpponentNameInputsOnChange(e) {
+function toggleOptionsAndName(e) {
   const opponent = e.target.value;
 
-  toggleOpponentInputs(opponent);
+  toggleInputsAndOptions(opponent);
 }
 
-function toggleOpponentInputs(opponent) {
+function toggleInputsAndOptions(opponent) {
   if (opponent == "computer") {
     hidePlayer2Input();
+    hideShipRevealOption();
   } else {
     showPlayer2Input();
+    showShipRevealOption();
   }
+}
+
+function showShipRevealOption() {
+  const inputDiv = getActivateShowButtonInputDiv();
+  inputDiv.classList.remove("hide");
+}
+
+function hideShipRevealOption() {
+  const inputDiv = getActivateShowButtonInputDiv();
+  inputDiv.classList.add("hide");
+}
+
+function getActivateShowButtonInputDiv() {
+  return document.querySelector("input#activate-show-button").parentElement;
 }
 
 function getPlayer2InputDiv() {
@@ -108,8 +124,18 @@ function handleGameStart(e) {
   const names = getPlayerNames(data);
   registerTwoPlayerGame(data);
   recordShowHitsOptionToGame(data.get("show-hits"));
+  recordActivateShipButtons(data.get("activate-show-button"));
 
   game.setupGame(names.playerOne, names.playerTwo);
+}
+
+function recordActivateShipButtons(activateButton) {
+  console.log(activateButton);
+  if (activateButton) {
+    game.setDontActivateShowButtons(false);
+  } else {
+    game.setDontActivateShowButtons(true);
+  }
 }
 
 function recordShowHitsOptionToGame(showHits) {

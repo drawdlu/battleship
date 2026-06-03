@@ -17,6 +17,7 @@ export default function createGame() {
   let player1, player2, currentPlayer, opponentPlayer, twoPlayerGame;
   let currentPlayerSettingUp = 1;
   let dontShowHits;
+  let dontActivateShowButtons;
 
   const renderBoards = (player, opponent) => {
     renderPlayerBoard(player, true);
@@ -123,8 +124,8 @@ export default function createGame() {
     return player2.name !== undefined;
   };
 
-  const changeDontShowHits = (value) => {
-    dontShowHits = value;
+  const changeDontShowHits = (booleanValue) => {
+    dontShowHits = booleanValue;
   };
 
   const getPlayerName = (playerNumber) => {
@@ -133,6 +134,10 @@ export default function createGame() {
     } else {
       player2.name;
     }
+  };
+
+  const setDontActivateShowButtons = (booleanValue) => {
+    dontActivateShowButtons = booleanValue;
   };
 
   renderOptions();
@@ -153,6 +158,9 @@ export default function createGame() {
     get dontShowHits() {
       return dontShowHits;
     },
+    get dontActivateShowButtons() {
+      return dontActivateShowButtons;
+    },
     attackMissed,
     attackHits,
     setupPlayerShips,
@@ -163,5 +171,6 @@ export default function createGame() {
     isHumanOpponent,
     changeDontShowHits,
     getPlayerName,
+    setDontActivateShowButtons,
   };
 }

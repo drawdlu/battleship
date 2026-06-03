@@ -138,7 +138,7 @@ export function showCurrentPlayerName() {
 }
 
 export function activateShowButtonForCurrentPlayer() {
-  if (!game.isHumanOpponent()) {
+  if (!game.isHumanOpponent() || game.dontActivateShowButtons) {
     return;
   }
   const isPlayerOne = game.isPlayerOneCurrentPlayer();
