@@ -159,30 +159,36 @@ function activateAndRemoveButtonListeners(currentDiv, opponentDiv) {
 
 function activateListener(button) {
   button.addEventListener("mousedown", showCurrentPlayerShips);
-  button.addEventListener("mouseup", hideCurrentPlayerShips);
 }
 
-function removeListener(button) {
+export function removeListener(button) {
   button.removeEventListener("mousedown", showCurrentPlayerShips);
-  button.removeEventListener("mouseup", hideCurrentPlayerShips);
+  document.removeEventListener("mouseup", hideCurrentPlayerShips);
 }
 
-function showCurrentPlayerShips(e) {
-  const container = getContainerFromShowButtonEvent(e);
+function showCurrentPlayerShips() {
+  const container = getCurrentPlayerContainer();
   const playerNumber = getPlayerNumberFromContainer(container);
   const board = container.querySelector(".board");
   removeDarkenClass(board);
 
   showShips(playerNumber);
+  document.addEventListener("mouseup", hideCurrentPlayerShips);
 }
 
-function hideCurrentPlayerShips(e) {
-  const container = getContainerFromShowButtonEvent(e);
+function hideCurrentPlayerShips() {
+  const container = getCurrentPlayerContainer();
   const playerNumber = getPlayerNumberFromContainer(container);
   const board = container.querySelector(".board");
   addDarkenClass(board);
 
   hidePlayerShips(playerNumber);
+}
+
+function getCurrentPlayerContainer() {
+  const isPlayerOne = game.isPlayerOneCurrentPlayer();
+
+  return getBoardDiv(isPlayerOne).parentElement;
 }
 
 function getContainerFromShowButtonEvent(e) {

@@ -1,6 +1,11 @@
 import { createNewGame } from "../index";
 import { getBoardDiv, removeDarkenClass, removeAttackListener } from "./board";
-import { showSetupButtons, hideShowButton, showShips } from "./two-player";
+import {
+  showSetupButtons,
+  hideShowButton,
+  showShips,
+  removeListener,
+} from "./two-player";
 import { hideShipHitsDisplay } from "./ship-hits";
 
 export function addNewGameListener(button) {
@@ -25,7 +30,7 @@ function handleShowHideElements() {
   removeBoardCells();
   showPlayer1SetupButtons();
   removeDarkenFromBoards(board1, board2);
-  hideShowButtons();
+  removeShowButtons();
   showPlayer1Ships();
   hideShipHitsDisplay();
   addCanMoveToShips();
@@ -62,11 +67,12 @@ function showPlayer1Ships() {
   showShips(1);
 }
 
-function hideShowButtons() {
+function removeShowButtons() {
   const buttonDivs = document.querySelectorAll(".showButton");
 
   buttonDivs.forEach((div) => {
     hideShowButton(div);
+    removeListener(div.querySelector("button"));
   });
 }
 
