@@ -16,6 +16,8 @@ dialog .hide {
   display: none;
 }
 
+/* start-options */
+
 dialog#start-options::backdrop {
   background-color: var(--dialog-backdrop-color);
 }
@@ -32,12 +34,14 @@ dialog#start-options .button-container {
   padding: .5rem;
 }
 
-dialog#start-options .button-container button {
+dialog#start-options .button-container button,
+dialog#player-two-setup .button-container button {
   padding: .25rem .5rem;
 
 }
 
-dialog#start-options .button-container button:hover {
+dialog#start-options .button-container button:hover,
+dialog#player-two-setup .button-container button:hover {
   cursor: pointer;
 }
 
@@ -64,4 +68,20 @@ dialog#start-options fieldset.names .field.hide {
 
 dialog#start-options fieldset.names input {
   width: 30ch;
+}
+
+/* player-two-setup */
+
+dialog#player-two-setup {
+  top: 30%;
+}
+
+dialog#player-two-setup .button-container {
+  display: flex;
+  justify-content: center;
+}
+
+dialog#player-two-setup::backdrop {
+  background-color: var(--dialog-backdrop-color);
+  opacity: .5;
 }
