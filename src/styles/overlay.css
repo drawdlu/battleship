@@ -72,16 +72,19 @@ dialog#start-options fieldset.names input {
 
 /* player-two-setup */
 
-dialog#player-two-setup {
+dialog#player-two-setup,
+dialog#win {
   top: 30%;
 }
 
-dialog#player-two-setup .button-container {
+dialog#player-two-setup .button-container,
+dialog#win .button-container {
   display: flex;
   justify-content: center;
 }
 
-dialog#player-two-setup::backdrop {
+dialog#player-two-setup::backdrop,
+dialog#win::backdrop {
   background-color: var(--dialog-backdrop-color);
   opacity: .5;
 }
