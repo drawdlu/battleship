@@ -36,6 +36,13 @@
   background-color: rgba(255, 0, 0, .5);
 }
 
+.boards .setup-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: .5rem;
+  justify-content: center;
+}
+
 .setup-buttons.hide {
   visibility: hidden;
 }
@@ -48,7 +55,8 @@
 .boards .name-button {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
+  gap: .5rem;
+  margin-bottom: .5rem;
 }
 
 .boards .name-button .showButton.hide {

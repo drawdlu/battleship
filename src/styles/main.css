@@ -14,7 +14,21 @@ header .title {
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.restart-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.restart-button-container button {
+  padding: 2px 5px;
 }

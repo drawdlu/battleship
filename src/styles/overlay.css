@@ -40,11 +40,6 @@ dialog#player-two-setup .button-container button {
 
 }
 
-dialog#start-options .button-container button:hover,
-dialog#player-two-setup .button-container button:hover {
-  cursor: pointer;
-}
-
 dialog#start-options fieldset.game-type {
   display: flex;
   gap: 1.5rem;
