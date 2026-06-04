@@ -16,7 +16,7 @@
     "test": "jest",
     "watch": "jest --watch *.js",
     "start": "webpack serve --open --config webpack.dev.js",
-    "build": "git checkout gh-pages && git merge main --no-edit && webpack --config webpack.prod.js",
+    "build": "git checkout -b gh-pages && git merge main --no-edit && webpack --config webpack.prod.js",
     "deploy": "git add dist -f && git commit -m \"Deployment commit\" && git subtree push --prefix dist origin gh-pages && git checkout main"
   },
   "repository": {
