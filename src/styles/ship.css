@@ -71,10 +71,10 @@
   display: block;
   background-image: url("../assets/images/rotate-svgrepo-com.svg");
   background-repeat: no-repeat;
-  background-size: 1.5rem;
+  background-size: 1rem;
   background-position: center;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1rem;
+  width: 1rem;
   position: absolute;
   top: 10px;
   transition-duration: .5s; 

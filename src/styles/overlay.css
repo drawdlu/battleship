@@ -1,3 +1,67 @@
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+dialog legend { 
+  font-size: 1.2rem;
+}
+
 dialog .hide {
   display: none;
+}
+
+dialog#start-options::backdrop {
+  background-color: var(--dialog-backdrop-color);
+}
+
+dialog#start-options .title h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+dialog#start-options .button-container {
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+}
+
+dialog#start-options .button-container button {
+  padding: .25rem .5rem;
+
+}
+
+dialog#start-options .button-container button:hover {
+  cursor: pointer;
+}
+
+dialog#start-options fieldset.game-type {
+  display: flex;
+  gap: 1.5rem;
+}
+
+dialog#start-options fieldset.names {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+dialog#start-options fieldset.names .field {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+dialog#start-options fieldset.names .field.hide {
+  display: none;
+}
+
+dialog#start-options fieldset.names input {
+  width: 30ch;
 }

@@ -115,14 +115,23 @@
           </div>
       </div>
       <dialog id="start-options">
+        <div class="title">
+          <h1>
+            Battleship
+          </h1>
+        </div>
         <div class="game-start-options">
           <form action="#">
             <fieldset class="game-type">
               <legend>Game Type:</legend>
-              <label for="computer">Player vs. Computer</label>
-              <input type="radio" id="computer" name="opponent" value="computer" checked>
-              <label for="player">Player vs. Player</label>
-              <input type="radio" id="player" name="opponent" value="player">
+              <div class="field">
+                <label for="computer">Player vs. Computer</label>
+                <input type="radio" id="computer" name="opponent" value="computer" checked>
+              </div>
+              <div class="field">
+                <label for="player">Player vs. Player</label>
+                <input type="radio" id="player" name="opponent" value="player">
+              </div>
             </fieldset>
             <fieldset class="names">
               <legend>Player Names: </legend>
@@ -146,7 +155,9 @@
                 <input type="checkbox" name="activate-show-button" id="activate-show-button">
               </div>
             </fieldset>
-            <button>Continue</button>
+            <div class="button-container">
+              <button>Continue</button>
+            </div>
           </form>
         </div>
       </dialog>
