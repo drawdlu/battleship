@@ -5,6 +5,8 @@ import {
   hideShowButton,
   showShips,
   removeListener,
+  hideSetupButtons,
+  hidePlayerShips,
 } from "./two-player";
 import { hideShipHitsDisplay } from "./ship-hits";
 
@@ -36,6 +38,17 @@ function handleShowHideElements() {
   addCanMoveToShips();
   removeAttackListeners();
   removeFleetDamage();
+  hideAllPlayerSetupButtons();
+  hidePlayer2Ships();
+}
+
+function hidePlayer2Ships() {
+  hidePlayerShips(2);
+}
+
+function hideAllPlayerSetupButtons() {
+  hideSetupButtons(1);
+  hideSetupButtons(2);
 }
 
 function removeFleetDamage() {

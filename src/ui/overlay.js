@@ -4,6 +4,7 @@ import {
   addNewGameListener,
   listenToRestart,
 } from "./play-again";
+import { showSetupButtons } from "./two-player";
 
 export function announceWinner(player) {
   const name = player.name;
@@ -120,8 +121,10 @@ function handleGameStart(e) {
   closeGameOptionsDialog();
 
   const data = new FormData(e.currentTarget);
-
   const names = getPlayerNames(data);
+  const playerNumber = 1;
+
+  showSetupButtons(playerNumber);
   registerTwoPlayerGame(data);
   recordShowHitsOptionToGame(data.get("show-hits"));
   recordActivateShipButtons(data.get("activate-show-button"));
