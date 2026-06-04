@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "montserrat";
+  src: url("../assets/fonts/Montserrat-VariableFont_wght.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "jersey20";
+  src: url("../assets/fonts/Jersey20-Regular.woff2") format("woff2");
+  font-style: normal;
+}
+
+* {
+  font-family: "jersey20", "montserrat", Arial, Helvetica, sans-serif, system-ui, -apple-system, BlinkMacSystemFont;
+  text-rendering: optimizeLegibility;
+  font-size: 1.2rem;
+}
