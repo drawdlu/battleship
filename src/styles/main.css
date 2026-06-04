@@ -1,3 +1,20 @@
 .playerTurn.hide {
   visibility: hidden;
 }
+
+header .title h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+}
+
+header .title {
+  background-color: #232F72;
+  margin-top: 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
